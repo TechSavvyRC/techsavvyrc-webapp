@@ -1,0 +1,528 @@
+/* Fonts */
+:root {
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "Raleway", sans-serif;
+    --nav-font: "Poppins", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root {
+    --background-color: #ffffff;
+    /* Background color for the entire website, including individual sections */
+    --default-color: #272829;
+    /* Default color used for the majority of the text content across the entire website */
+    --heading-color: #050d18;
+    /* Color for headings, subheadings and title throughout the website */
+    --accent-color: #149ddd;
+    /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --surface-color: #ffffff;
+    /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+    --contrast-color: #ffffff;
+    /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+	--code-bg: #1e1e1e;
+	--primary-color: #2563eb;
+	--sidebar-width: 250px;
+	--text-color: #1f2937;
+    --primary-black: #000000;
+    --deep-blue: #1E3A8A;
+    --light-gray: #181717;
+    --medium-blue: #2563EB;
+    --light-blue: #3B82F6;
+    --lighter-blue: #60A5FA;
+    --very-light-blue: #93C5FD;
+    --deep-black: #0A0A0A;         /* Very dark black */
+    --light-black: #1C1C1C;        /* Dark shade of black */
+    --medium-black: #2E2E2E;       /* Medium black */
+    --charcoal-black: #424242;     /* Charcoal black */
+    --gray-black: #5A5A5A;         /* Lighter black with a grayish tone */
+    --light-gray-black: #767676;   /* Lightest black, more grayish */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+    --nav-color: #a8a9b4;
+    /* The default color of the main navmenu links */
+    --nav-hover-color: #ffffff;
+    /* Applied to main navmenu links when they are hovered over or active */
+    --nav-mobile-background-color: #040b14;
+    /* Used as the background color for mobile navigation menu */
+    --nav-dropdown-background-color: #040b14;
+    /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+    --nav-dropdown-color: #a8a9b4;
+    /* Used for navigation links of the dropdown items in the navigation menu. */
+    --nav-dropdown-hover-color: #ffffff;
+    /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+.light-background {
+    --background-color: #f4fafd;
+    --surface-color: #ffffff;
+}
+
+.dark-background {
+    --background-color: #040b14;
+    --default-color: #ffffff;
+    --heading-color: #ffffff;
+    --surface-color: #151f2b;
+    --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+    scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+    font-family: var(--default-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Add additional spacing for subheadings (h4, h5, h6) if used */
+h4, h5, h6 {
+    margin-top: 2em;   /* Space above the heading */
+    margin-bottom: 0.5em; /* Space below the heading */
+}*/
+
+/* Heading Styles */
+h1 {
+    font-size: 2.5em;
+    font-weight: 700; /* Bold */
+    color: var(--heading-color);
+}
+
+h2 {
+    font-size: 2em;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    font-weight: 600; /* Semi-bold */
+    color: var(--bold-blue);
+}
+
+h3 {
+  font-size: 1.75em;
+  font-weight: 600; /* Semi-bold */
+  color: var(--light-gray);
+}
+
+h4 {
+  font-size: 1.5em;
+  font-weight: 500; /* Medium weight */
+  color: var(--medium-black);
+}
+
+h5 {
+  font-size: 1.10em;
+  font-weight: 500; /* Medium weight */
+  color: var(--medium-black);
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: 500; /* Medium weight */
+  color: var(--very-light-blue);
+}
+
+/* Paragraphs under headings */
+p {
+  font-size: 1em; /* Default font size for paragraphs */
+  color: var(--primary-black); /* Black for the main text */
+}
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 0 15px;
+    width: 300px;
+    transition: all ease-in-out 0.3s;
+    overflow-y: auto;
+    z-index: 997;
+    border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.header {
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.logo {
+	border-bottom: none;
+	text-decoration: none;
+	margin-left: -15px;
+	margin-top: 20px;
+    margin-bottom: 20px;
+}
+	
+.header .logo img {
+    max-height: 32px;
+    margin-right: 8px;
+}
+
+.header .logo h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--background-color);
+    padding: 1rem;
+    border-right: 1px solid #e5e7eb;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sitename {
+    color: #B0ADAC;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    margin-left: var(--sidebar-width);
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.code-block {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #4b5563;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.2s;
+}
+
+.copy-button:hover {
+    background: #374151;
+}
+
+/* General collapsible styling */
+.collapsible {
+    cursor: pointer;
+    position: relative; /* Position for icon placement */
+    padding-right: 1.5rem; /* Space for icon */
+    font-family: "Roboto", system-ui, sans-serif;
+}
+
+/*------------------------- Main Heading -------------------------*/
+.collapsible.main-heading {
+    background-color: #777; /* Blue background for main heading */
+    color: white; /* White text for contrast */
+    cursor: pointer;
+    padding: 18px; /* Padding for the heading */
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px; /* Slightly larger font for the heading */
+    font-weight: 600; /* Bold font weight */
+    position: relative; /* Position for icon placement */
+}
+
+/* Active state and hover effect for main heading */
+.collapsible.main-heading.active, .collapsible.main-heading:hover {
+    background-color: #777; /* Darker blue on hover or when active */
+}
+
+/* Main heading icon styling */
+.collapsible.main-heading::after {
+    font-size: 1.2em; /* Appropriate icon size */
+    color: white; /* Icon color matches text */
+    position: absolute;
+    right: 18px; /* Position to the right */
+    transition: transform 0.3s ease; /* Smooth rotation when expanded */
+}
+
+/*------------------------- Sub Heading -------------------------*/
+.collapsible.subheading {
+    background-color: #D9D9D9;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.10em;
+    font-weight: 500;
+    color: var(--light-gray);
+}
+
+.collapsible.subheading::after {
+    content: '\002B'; /* Right-pointing chevron for subheadings */
+    font-size: 1em; /* Adjusted size for subheadings */
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s ease; /* Smooth rotation when expanded */
+}
+
+.collapsible.active.subheading::after {
+    content: '\2212'; /* Change subheading icon to downward chevron when expanded */
+}
+
+/* Collapsible content */
+.content {
+    padding: 1rem;
+    background-color: #f9f9f9; /* Light background for content */
+    border-left: 3px solid #777; /* Left border for content styling */
+    margin-top: 0.5rem;
+    display: none; /* Hidden by default */
+    overflow: hidden;
+    transition: display 0.3s ease-out;
+}
+
+.collapsible.active + .content {
+    display: block; /* Show content when collapsible is active */
+    padding: 1rem;
+}
+
+/*.content {
+	overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}*/
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #666;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.mobile-nav-toggle {
+    display: none;
+}
+
+.navmenu {
+    padding: 0;
+    z-index: 9997;
+	border-bottom: none;
+	text-decoration: none;
+}
+
+.navmenu ul {
+    list-style: none;
+    padding: 0 0 20px 0;
+    margin: 0;
+}
+
+.navmenu a,
+.navmenu a:focus {
+    color: var(--nav-color);
+    padding: 15px 10px;
+    font-family: var(--nav-font);
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: 0.3s;
+    width: 100%;
+	text-decoration: none;
+}
+
+.navmenu a .navicon,
+.navmenu a:focus .navicon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.navmenu a .toggle-dropdown,
+.navmenu a:focus .toggle-dropdown {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    flex-shrink: 0;
+	background: #f8fafc;
+}
+
+.navmenu a .toggle-dropdown:hover,
+.navmenu a:focus .toggle-dropdown:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+}
+
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+    color: var(--nav-hover-color);
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+    color: var(--accent-color);
+}
+
+.navmenu .active .toggle-dropdown,
+.navmenu .active:focus .toggle-dropdown {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg);
+}
+
+.navmenu .dropdown {
+    display: block;
+}
+
+.navmenu .dropdown a,
+.navmenu .dropdown a:focus {
+    color: --nav-dropdown-color;
+}
+
+.navmenu .dropdown a:hover,
+.navmenu .dropdown .active,
+.navmenu .dropdown .active:focus {
+    color: var(--nav-dropdown-hover-color);
+}
+
+.navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    background-color: var(--nav-dropdown-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+}
+
+.navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+}
+
+.image-container {
+    text-align: center; /* Center the image */
+    width: 500px; /* Set the desired width */
+    height: auto; /* Keep the aspect ratio intact */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    margin-top: 10px; /* Adds some space between the text and image */
+}
+
+.responsive-image {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: add rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+}
+
+.styled-list li {
+    margin-bottom: 3rem; /* Adds space between each list item */
+}
+
+/* Optional: Style for nested lists */
+.styled-list ul {
+    margin-top: 2.5rem; /* Space before a nested list */
+}
+
+
+/* Container for the list */
+.custom-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns of equal width */
+    gap: 2rem; /* Adds space between the list items */
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+.custom-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Adds space between images in each list item */
+}
+
+li {
+    margin-bottom: 0.5rem; /* Adds space between each list item */
+}
