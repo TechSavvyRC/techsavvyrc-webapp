@@ -26,13 +26,12 @@
         <!-- Main CSS File -->
         <link href="../../css/blog_page.css" rel="stylesheet">
     </head>
-
     <body class="blog-page">
         <header class="sidebar dark-background">
             <div class="logo d-flex justify-content-center">
-              <a href="../../../index.html" class="home-icon-link" aria-label="Home">
+                <a href="../../../index.html" class="home-icon-link" aria-label="Home">
                 <i class="bi bi-house navicon" style="color:#6c757d; font-size: 2.0rem; line-height:1;" ></i>
-              </a>
+                </a>
             </div>
             <nav id="navmenu" class="navmenu">
                 <h2 class="sitename" style="text-align: center; margin: 20px auto;">CONTENTS</h2>
@@ -50,7 +49,6 @@
                 </ul>
             </nav>
         </header>
-
         <main class="main-content">
             <!-- Blog Section -->
             <section id="blog" class="blog blog-section" style="justify-content: left;  padding: 0px 0;">
@@ -58,7 +56,6 @@
                     <h1 style="font-size: 50px; border-bottom: none; text-decoration: none;" class="h1 dark-background">Kafka-ELK Stack with Docker: A Comprehensive Guide</h1>
                 </div>
             </section>
-
             <!-- 1. Overview -->
             <section id="overview" class="blog-section">
                 <h2 class="collapsible main-heading">1. Overview</h2>
@@ -67,7 +64,6 @@
                     <p style="text-align: justify; margin-bottom: 20px;">This setup is intended to simulate a real-time streaming pipeline where a producer (banking app) pushes data to Kafka, and Logstash acts as a consumer that processes and sends the data to Elasticsearch. Kibana is used to analyze and visualize the data through customized dashboards.</p>
                 </div>
             </section>
-
             <!-- 2. Setup Guide -->
             <section id="setup-guide" class="blog-section">
                 <h2 class="collapsible main-heading">2. Setup Guide for Docker Containers</h2>
@@ -85,7 +81,6 @@
                         </ul>
                         <p>For users unfamiliar with Docker, basic knowledge of Linux commands and Docker is recommended.</p>
                     </div>
-
                     <!-- Subheading: Prerequisites -->
                     <h3 class="collapsible subheading">2.2 Repository Structure</h3>
                     <div class="content">
@@ -113,7 +108,6 @@
 </code></pre>
                         </div>
                     </div>
-
                     <!-- Subheading: Retrieve Repository Files -->
                     <h3 class="collapsible subheading">2.3 Retrieve Repository Files</h3>
                     <div class="content">
@@ -122,7 +116,7 @@
                         <div class="indent">
                             <p>To manually download the repository files, follow these steps:</p>
                             <ol>
-                                <li>Navigate to the repository’s GitHub page: 
+                                <li>Navigate to the repository’s GitHub page:
                                     <a href="https://github.com/TechSavvyRC/elk_docker" target="_blank">https://github.com/TechSavvyRC/elk_docker</a>.
                                 </li>
                                 <li>Click the <strong>Code</strong> button.</li>
@@ -169,13 +163,12 @@ cd elk_docker-main</code></pre>
                         <ol>
                             <li>Download and install <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a>.</li>
                             <li>Click <strong>File &gt; Clone Repository</strong>.</li>
-                            <li>Paste the repository URL: 
+                            <li>Paste the repository URL:
                                 <a href="https://github.com/TechSavvyRC/elk_docker.git" target="_blank">https://github.com/TechSavvyRC/elk_docker.git</a>.
                             </li>
                             <li>Choose a local path and click <strong>Clone</strong>.</li>
                         </ol>
                     </div>
-
                     <!-- Subheading: Setup Instructions -->
                     <h3 class="collapsible subheading">2.4 Setup Instructions</h3>
                     <div class="content">
@@ -204,7 +197,6 @@ cd elk_docker-main</code></pre>
                         </div>
                         <img src="../../img/blog/pic1.png" alt="Docker Containers" class="image-container responsive-image" style="width: 65%;">
                     </div>
-
                     <!-- Subheading: Configuration -->
                     <h3 class="collapsible subheading">2.5 Configuration</h3>
                     <div class="content">
@@ -223,7 +215,6 @@ cd elk_docker-main</code></pre>
                             <li>The variables ensure that Logstash consumes from the correct Kafka topics, Elasticsearch is properly secured, and the banking app connects to Kafka.</li>
                         </ul>
                     </div>
-
                     <!-- Subheading: Running Docker Containers -->
                     <h3 class="collapsible subheading">2.6 Running Docker Containers</h3>
                     <div class="content">
@@ -303,7 +294,6 @@ cd elk_docker-main</code></pre>
                             </li>
                         </ul>
                     </div>
-
                     <!-- Subheading: Troubleshooting and Common Issues -->
                     <h3 class="collapsible subheading">2.7 Troubleshooting and Common Issues</h3>
                     <div class="content">
@@ -313,14 +303,16 @@ cd elk_docker-main</code></pre>
                         <strong>Solution:</strong>
                         <p>Convert the file to use Unix-style line endings (LF):</p>
                         <ol>
-                            <li><strong>Using Git Configuration:</strong> 
+                            <li>
+                                <strong>Using Git Configuration:</strong>
                                 <p>Run the following command to ensure Git converts line endings to LF when checking out files:</p>
                                 <div class="code-block">
                                     <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
                                     <pre><code class="language-bash">git config --global core.autocrlf input</code></pre>
                                 </div>
                             </li>
-                            <li><strong>Using dos2unix Tool:</strong> 
+                            <li>
+                                <strong>Using dos2unix Tool:</strong>
                                 <p>If you have the dos2unix utility installed, convert the line endings by running:</p>
                                 <div class="code-block">
                                     <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
@@ -361,7 +353,6 @@ cd elk_docker-main</code></pre>
                     </div>
                 </div>
             </section>
-
             <!-- 3. Docker Commands -->
             <section id="docker-commands" class="blog-section">
                 <h2 class="collapsible main-heading">3. Docker Commands</h2>
@@ -387,7 +378,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker system prune</code></pre>
                         </div>
                     </div>
-
                     <h3 class="collapsible subheading">3.2 Docker Container Management Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker ps</h4>
@@ -433,7 +423,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker run -d --name &lt;my_container&gt; &lt;my_image&gt;</code></pre>
                         </div>
                     </div>
-
                     <h3 class="collapsible subheading">3.3 Docker Image Management Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker images</h4>
@@ -467,7 +456,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker push my_image</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.4 Docker Network Management Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker network ls</h4>
@@ -513,7 +501,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker run --network none my_image</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.5 Docker Log Management Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker logs &lt;container-name-or-id&gt;</h4>
@@ -565,7 +552,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker logs -f -t --tail 100 my_container</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.6 Docker Volume Management Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker volume ls</h4>
@@ -593,7 +579,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker volume rm my_volume</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.7 Docker Exec (Running Commands in Containers)</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker exec &lt;container-name-or-id&gt; &lt;my_command&gt;</h4>
@@ -633,7 +618,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker exec -w &lt;directory_path&gt; &lt;my_container&gt; &lt;my_command&gt;</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.8 Docker Networking Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker network ls</h4>
@@ -667,7 +651,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker network disconnect my_network my_container</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.9 Docker Compose Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker-compose up</h4>
@@ -701,7 +684,6 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker-compose build</code></pre>
                         </div>
                     </div>
-                    
                     <h3 class="collapsible subheading">3.10 Docker Swarm Commands</h3>
                     <div class="content">
                         <h4 style="margin-top: 0em;">docker swarm init</h4>
@@ -735,82 +717,77 @@ cd elk_docker-main</code></pre>
                             <pre><code class="language-bash">docker stack deploy -c docker-compose.yml my_stack</code></pre>
                         </div>
                     </div>
-
                 </div>
             </section>
-
             <!-- 4. Containers -->
             <section id="containers" class="blog-section">
                 <h2 class="collapsible main-heading">4. Containers</h2>
                 <div class="content">
                     <p style="margin-top: 0.5em;">Containers are the building blocks of this architecture. Each service (Elasticsearch, Logstash, Kafka, etc.) runs inside its own Docker container. These containers are lightweight, isolated environments that allow the services to run independently on the same host machine. The key Docker containers in this architecture are:</p>
                     <h8 style="margin-top: 0.5em;"><strong>Elasticsearch Cluster:</strong></h8>
-                        <p>A distributed search and analytics engine. It stores all the ingested data and provides search capabilities.</p>
-                        <ul>
-                           <li>Coordination Node (1 container)</li>
-                           <li>Master Nodes (3 containers)</li>
-                        </ul>
+                    <p>A distributed search and analytics engine. It stores all the ingested data and provides search capabilities.</p>
+                    <ul>
+                        <li>Coordination Node (1 container)</li>
+                        <li>Master Nodes (3 containers)</li>
+                    </ul>
                     <h8 style="margin-top: 0.5em;"><strong>Kibana Instances:</strong></h8>
-                        <p>A data visualization dashboard for Elasticsearch. It allows users to create and share dynamic dashboards displaying changes to Elasticsearch queries in real-time.</p>
-                        <ul>
-                           <li>Two Kibana containers for dashboard and data visualization.</li>
-                        </ul>
+                    <p>A data visualization dashboard for Elasticsearch. It allows users to create and share dynamic dashboards displaying changes to Elasticsearch queries in real-time.</p>
+                    <ul>
+                        <li>Two Kibana containers for dashboard and data visualization.</li>
+                    </ul>
                     <h8 style="margin-top: 0.5em;"><strong>Logstash:</strong></h8>
-                        <p>A server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and sends it to your favorite "stash" (like Elasticsearch).</p>
-                        <ul>
-                           <li>One container that connects Kafka (producer) to Elasticsearch (consumer).</li>
-                        </ul>
+                    <p>A server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and sends it to your favorite "stash" (like Elasticsearch).</p>
+                    <ul>
+                        <li>One container that connects Kafka (producer) to Elasticsearch (consumer).</li>
+                    </ul>
                     <h8 style="margin-top: 0.5em;"><strong>Zookeeper:</strong></h8>
-                        <p>A centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. It is used to manage Kafka brokers.</p>
-                        <ul>
-                           <li>Zookeeper (1 container): Manages Kafka brokers.</li>
-                        </ul>
+                    <p>A centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. It is used to manage Kafka brokers.</p>
+                    <ul>
+                        <li>Zookeeper (1 container): Manages Kafka brokers.</li>
+                    </ul>
                     <h8 style="margin-top: 0.5em;"><strong>Kafka:</strong></h8>
-                        <p>A distributed event streaming platform capable of handling trillions of events a day. It acts as a message broker that allows the banking app to publish messages.</p>
-                        <ul>
-                           <li>Kafka (1 container): Receives and stores data from the banking app.</li>
-                        </ul>
+                    <p>A distributed event streaming platform capable of handling trillions of events a day. It acts as a message broker that allows the banking app to publish messages.</p>
+                    <ul>
+                        <li>Kafka (1 container): Receives and stores data from the banking app.</li>
+                    </ul>
                     <h8 style="margin-top: 0.5em;"><strong>Python Banking App:</strong></h8>
-                        <p>A Python application that simulates bank transactions and pushes data to Kafka for further processing.</p>
-                        <ul>
-                           <li>One container that generates fake bank transactions and sends them to Kafka.</li>
-                        </ul>
+                    <p>A Python application that simulates bank transactions and pushes data to Kafka for further processing.</p>
+                    <ul>
+                        <li>One container that generates fake bank transactions and sends them to Kafka.</li>
+                    </ul>
                 </div>
             </section>
-
             <!-- 5. Network Config -->
             <section id="network-config" class="blog-section">
                 <h2 class="collapsible main-heading">5. Network Configuration</h2>
                 <div class="content">
                     <p style="margin-top: 0.5em;">Docker allows the creation of bridge networks to isolate and control communication between containers. Two bridge networks are defined in this architecture:</p>
                     <h8 style="margin-top: 0.5em;"><strong>elastic_network:</strong></h8>
-                        <p>This network connects all the ELK containers (Elasticsearch, Logstash, Kibana). Its purpose is to ensure isolated communication for the ELK stack and allows the following:</p>
-                        <ul>
-                           <li>Kibana instances connect to the Elasticsearch coordination node.</li>
-                           <li>Logstash connects to Elasticsearch to send processed data.</li>
-                        </ul>
+                    <p>This network connects all the ELK containers (Elasticsearch, Logstash, Kibana). Its purpose is to ensure isolated communication for the ELK stack and allows the following:</p>
+                    <ul>
+                        <li>Kibana instances connect to the Elasticsearch coordination node.</li>
+                        <li>Logstash connects to Elasticsearch to send processed data.</li>
+                    </ul>
                     <h8 style="margin-top: 0.5em;"><strong>kafka_network:</strong></h8>
-                        <p>This network connects the Kafka stack (Kafka and Zookeeper) and the Python banking application. The purpose is to enable communication between:</p>
-                        <ul>
-                           <li>Kafka and Zookeeper for managing Kafka brokers.</li>
-                           <li>The Python banking application and Kafka for publishing data to the Kafka topic.</li>
-                        </ul>
-                        <p>Logstash is connected to both networks (<strong><i>elastic_network</i></strong> and <strong><i>kafka_network</i></strong>) to act as a bridge, facilitating data transfer between Kafka and Elasticsearch.</p>
+                    <p>This network connects the Kafka stack (Kafka and Zookeeper) and the Python banking application. The purpose is to enable communication between:</p>
+                    <ul>
+                        <li>Kafka and Zookeeper for managing Kafka brokers.</li>
+                        <li>The Python banking application and Kafka for publishing data to the Kafka topic.</li>
+                    </ul>
+                    <p>Logstash is connected to both networks (<strong><i>elastic_network</i></strong> and <strong><i>kafka_network</i></strong>) to act as a bridge, facilitating data transfer between Kafka and Elasticsearch.</p>
                 </div>
             </section>
-
             <!-- 6. Host Machine -->
             <section id="host-machine" class="blog-section">
                 <h2 class="collapsible main-heading">6. Host Machine</h2>
                 <div class="content">
                     <p>The host machine is the physical or virtual machine where Docker is installed. This machine orchestrates all the Docker containers and provides the necessary resources (CPU, memory, disk space) for the containers to operate.</p>
                     <h8 style="margin-top: 0.5em;"><strong>Docker Engine:</strong></h8>
-                        <p>The Docker engine runs on the host machine, allowing containers to run independently with isolated resources.</p>
+                    <p>The Docker engine runs on the host machine, allowing containers to run independently with isolated resources.</p>
                     <h8 style="margin-top: 0.5em;"><strong>Networks on the Host:</strong></h8>
-                        <p>The Docker bridge networks (<strong><i>elastic_network</i></strong>, <strong><i>kafka_network</i></strong>) exist only within the Docker environment but use the host machine's network interfaces for external communication.</p>
+                    <p>The Docker bridge networks (<strong><i>elastic_network</i></strong>, <strong><i>kafka_network</i></strong>) exist only within the Docker environment but use the host machine's network interfaces for external communication.</p>
                 </div>
             </section>
-
             <!-- 7. Architecture -->
             <section id="architecture" class="blog-section">
                 <h2 class="collapsible main-heading">7. Architecture</h2>
@@ -820,25 +797,25 @@ cd elk_docker-main</code></pre>
                         <p style="margin-top: 0.5em;">The Elasticsearch cluster comprises different containers, each playing a crucial role in managing, indexing, and storing data.</p>
                         <h8 style="margin-top: 0.5em;"><strong>Coordination Node (1):</strong></h8>
                         <ul>
-                           <li>Acts as a gateway for communication between Kibana, Logstash, and Elasticsearch master nodes.</li>
-                           <li>Routes and distributes requests from Kibana and Logstash to the appropriate master nodes.</li>
-                           <li>Manages traffic and client requests, but does not store data.</li>
-                           <li>Ensures efficient coordination of data distribution across the master nodes.</li>
+                            <li>Acts as a gateway for communication between Kibana, Logstash, and Elasticsearch master nodes.</li>
+                            <li>Routes and distributes requests from Kibana and Logstash to the appropriate master nodes.</li>
+                            <li>Manages traffic and client requests, but does not store data.</li>
+                            <li>Ensures efficient coordination of data distribution across the master nodes.</li>
                         </ul>
                         <h8 style="margin-top: 0.5em;"><strong>Master Nodes (3):</strong></h8>
                         <ul>
-                           <li>Responsible for cluster state management, data indexing, and search operations.</li>
-                           <li>Distribute and replicate data to ensure high availability and redundancy within the cluster.</li>
-                           <li>Manage indexing and searching tasks, ensuring consistent performance across the cluster.</li>
+                            <li>Responsible for cluster state management, data indexing, and search operations.</li>
+                            <li>Distribute and replicate data to ensure high availability and redundancy within the cluster.</li>
+                            <li>Manage indexing and searching tasks, ensuring consistent performance across the cluster.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.2 Kibana Instances</h3>
                     <div class="content">
                         <ul>
-                           <li>Provides a user interface for visualizing and interacting with data stored in Elasticsearch.</li>
-                           <li>Both Kibana containers connect to the coordination node for data retrieval.</li>
-                           <li>Enable users to create dashboards, visualizations, and queries based on indexed data in Elasticsearch.</li>
-                           <li>Serve as the front-end for Elasticsearch, offering real-time data insights.</li>
+                            <li>Provides a user interface for visualizing and interacting with data stored in Elasticsearch.</li>
+                            <li>Both Kibana containers connect to the coordination node for data retrieval.</li>
+                            <li>Enable users to create dashboards, visualizations, and queries based on indexed data in Elasticsearch.</li>
+                            <li>Serve as the front-end for Elasticsearch, offering real-time data insights.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.3 Logstash</h3>
@@ -860,14 +837,14 @@ cd elk_docker-main</code></pre>
                         <p style="margin-top: 0.5em;">Zookeeper and Kafka form the backbone of the message queue system, which manages the real-time data flow.</p>
                         <h8 style="margin-top: 0.5em;"><strong>Zookeeper:</strong></h8>
                         <ul>
-                           <li>Coordinates Kafka brokers, ensuring the proper functioning of the Kafka cluster.</li>
-                           <li>Manages cluster configuration, maintaining a consistent view of the brokers and ensuring they operate correctly.</li>
+                            <li>Coordinates Kafka brokers, ensuring the proper functioning of the Kafka cluster.</li>
+                            <li>Manages cluster configuration, maintaining a consistent view of the brokers and ensuring they operate correctly.</li>
                         </ul>
                         <h8 style="margin-top: 0.5em;"><strong>Kafka:</strong></h8>
                         <ul>
-                           <li>Acts as the message broker, receiving transaction data from the banking app and making it available to consumers like Logstash.</li>
-                           <li>Data is published to a Kafka topic (<strong><i>banking_transactions</i></strong>), where it is stored until consumed by Logstash.</li>
-                           <li>Brokers in Kafka manage and handle message distribution, ensuring that data from the banking app is available for downstream processing.</li>
+                            <li>Acts as the message broker, receiving transaction data from the banking app and making it available to consumers like Logstash.</li>
+                            <li>Data is published to a Kafka topic (<strong><i>banking_transactions</i></strong>), where it is stored until consumed by Logstash.</li>
+                            <li>Brokers in Kafka manage and handle message distribution, ensuring that data from the banking app is available for downstream processing.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.5 Python Banking Application</h3>
@@ -882,10 +859,9 @@ cd elk_docker-main</code></pre>
                     </div>
                     <div>
                         <img src="../../img/blog/pic15.png" alt="Architecture" class="image-container responsive-image" style="width: 80%;">
-                    </div>    
+                    </div>
                 </div>
             </section>
-
             <!-- 8. Data Flow -->
             <section id="data-flow" class="blog-section">
                 <h2 class="collapsible main-heading">8. Data Flow</h2>
@@ -893,80 +869,80 @@ cd elk_docker-main</code></pre>
                     <p style="margin-top: 0.5em;">The architecture comprises various containers (Python banking app, Kafka, Logstash, Elasticsearch, and Kibana), each playing a specific role in the data pipeline. Here's a step-by-step breakdown of the data flow between these containers, highlighting how data is generated, ingested, processed, stored, and visualized.</p>
                     <div>
                         <img src="../../img/blog/pic16.png" alt="Data Flow" class="image-container responsive-image" style="width: 80%;">
-                    </div>    
+                    </div>
                     <br>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">8.1 Data Generation</h3>
                     <div class="content">
                         <h8 style="margin-top: 0.5em;"><strong>Python Banking Application:</strong></h8>
                         <ul>
-                           <li>The Python banking app generates random synthetic transaction data. This data simulates real-world bank transactions and includes key details such as:</li>
-                           <ul>
+                            <li>The Python banking app generates random synthetic transaction data. This data simulates real-world bank transactions and includes key details such as:</li>
+                            <ul>
                                 <li>transaction_id: A unique identifier for each transaction.</li>
                                 <li>amount: A randomly generated amount for each transaction.</li>
                                 <li>transaction_timestamp: The time the transaction occurred.</li>
-                           </ul>
-                           <li>The generated data is published to Kafka over the <strong><i>kafka_network</i></strong>. This network is shared between Kafka, Zookeeper, and the Python banking app, enabling communication between these components.</li>
-                           <li>Publishing to Kafka: The transaction data is sent to a Kafka topic named <strong><i>banking_transactions</i></strong>. Kafka topics are essentially channels where producers (like the banking app) send data and consumers (like Logstash) subscribe to receive it.</li>
+                            </ul>
+                            <li>The generated data is published to Kafka over the <strong><i>kafka_network</i></strong>. This network is shared between Kafka, Zookeeper, and the Python banking app, enabling communication between these components.</li>
+                            <li>Publishing to Kafka: The transaction data is sent to a Kafka topic named <strong><i>banking_transactions</i></strong>. Kafka topics are essentially channels where producers (like the banking app) send data and consumers (like Logstash) subscribe to receive it.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">8.2 Data Ingestion</h3>
                     <div class="content">
                         <h8 style="margin-top: 0.5em;"><strong>Kafka:</strong></h8>
                         <ul>
-                           <li>Kafka brokers, managed by Zookeeper, receive the transaction data from the banking app. The data is stored in the Kafka topic <strong><i>banking_transactions</i></strong>.</li>
-                           <li>Kafka ensures the message (transaction data) is persisted until a consumer (Logstash) subscribes to the topic and processes the data.</li>
-                           <li>Kafka acts as a buffer to store data until Logstash is ready to consume it, ensuring a reliable and fault-tolerant message queue.</li>
+                            <li>Kafka brokers, managed by Zookeeper, receive the transaction data from the banking app. The data is stored in the Kafka topic <strong><i>banking_transactions</i></strong>.</li>
+                            <li>Kafka ensures the message (transaction data) is persisted until a consumer (Logstash) subscribes to the topic and processes the data.</li>
+                            <li>Kafka acts as a buffer to store data until Logstash is ready to consume it, ensuring a reliable and fault-tolerant message queue.</li>
                         </ul>
                         <h8 style="margin-top: 0.5em;"><strong>Logstash:</strong></h8>
                         <ul>
-                           <li>Logstash is connected to both the <strong><i>kafka_network</i></strong> (to consume data from Kafka) and the <strong><i>elastic_network</i></strong> (to forward data to Elasticsearch).</li>
-                           <li>Logstash is configured to subscribe to the <strong><i>banking_transactions</i></strong> topic in Kafka. Once connected, it continuously listens for new transaction data produced by the banking app.</li>
-                           <li>As new data arrives in Kafka, Logstash consumes the data in near real-time, moving it to the next stage of the pipeline for further processing.</li>
+                            <li>Logstash is connected to both the <strong><i>kafka_network</i></strong> (to consume data from Kafka) and the <strong><i>elastic_network</i></strong> (to forward data to Elasticsearch).</li>
+                            <li>Logstash is configured to subscribe to the <strong><i>banking_transactions</i></strong> topic in Kafka. Once connected, it continuously listens for new transaction data produced by the banking app.</li>
+                            <li>As new data arrives in Kafka, Logstash consumes the data in near real-time, moving it to the next stage of the pipeline for further processing.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">8.3 Data Processing</h3>
                     <div class="content">
                         <h8 style="margin-top: 0.5em;"><strong>Logstash Processing:</strong></h8>
                         <ul>
-                           <li>After consuming the transaction data from Kafka, Logstash processes the data according to its configuration file (<strong><i>logstash.conf</i></strong>). This step might include:</li>
-                           <ul>
+                            <li>After consuming the transaction data from Kafka, Logstash processes the data according to its configuration file (<strong><i>logstash.conf</i></strong>). This step might include:</li>
+                            <ul>
                                 <li>Data transformation: Logstash can transform or modify the data (e.g., converting field names, adjusting formats).</li>
                                 <li>Filtering: Specific filters can be applied to clean, parse, or structure the data. For example, Logstash could apply grok patterns to extract specific fields from raw data or standardize data formats.</li>
-                           </ul>
-                           <li>The processing ensures that the data is in a format suitable for indexing in Elasticsearch. This structured format will make searching, analyzing, and visualizing the data more efficient.</li>
+                            </ul>
+                            <li>The processing ensures that the data is in a format suitable for indexing in Elasticsearch. This structured format will make searching, analyzing, and visualizing the data more efficient.</li>
                         </ul>
                         <h8 style="margin-top: 0.5em;"><strong>Forwarding to Elasticsearch:</strong></h8>
                         <ul>
-                           <li>Once the data is processed, Logstash forwards the processed data to Elasticsearch for storage. This is done through the <strong><i>elastic_network</i></strong>, which connects Logstash to the Elasticsearch containers.</li>
-                           <li>Logstash Output Configuration: Logstash’s output configuration specifies the destination (Elasticsearch coordination node) where the processed data should be sent for indexing.</li>
+                            <li>Once the data is processed, Logstash forwards the processed data to Elasticsearch for storage. This is done through the <strong><i>elastic_network</i></strong>, which connects Logstash to the Elasticsearch containers.</li>
+                            <li>Logstash Output Configuration: Logstash’s output configuration specifies the destination (Elasticsearch coordination node) where the processed data should be sent for indexing.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">8.4 Data Storage</h3>
                     <div class="content">
                         <h8 style="margin-top: 0.5em;"><strong>Elasticsearch Coordination Node:</strong></h8>
                         <ul>
-                           <li>The coordination node in Elasticsearch is responsible for receiving the data from Logstash. It acts as an intermediary between Logstash and the Elasticsearch master nodes.</li>
-                           <li>Upon receiving the data, the coordination node distributes the indexing requests to the appropriate master nodes in the Elasticsearch cluster.</li>
+                            <li>The coordination node in Elasticsearch is responsible for receiving the data from Logstash. It acts as an intermediary between Logstash and the Elasticsearch master nodes.</li>
+                            <li>Upon receiving the data, the coordination node distributes the indexing requests to the appropriate master nodes in the Elasticsearch cluster.</li>
                         </ul>
                         <h8 style="margin-top: 0.5em;"><strong>Master Nodes:</strong></h8>
                         <ul>
-                           <li>The master nodes handle the indexing and storage of the transaction data. Elasticsearch breaks down the data into indices (structured records) to enable fast search and retrieval.</li>
-                           <li>The data is replicated and distributed across multiple master nodes, ensuring high availability and fault tolerance. This means even if one node goes down, the data remains accessible from another node.</li>
-                           <li>Cluster Management: The master nodes ensure that the cluster remains healthy, balancing the load across all nodes for optimal performance.</li>
+                            <li>The master nodes handle the indexing and storage of the transaction data. Elasticsearch breaks down the data into indices (structured records) to enable fast search and retrieval.</li>
+                            <li>The data is replicated and distributed across multiple master nodes, ensuring high availability and fault tolerance. This means even if one node goes down, the data remains accessible from another node.</li>
+                            <li>Cluster Management: The master nodes ensure that the cluster remains healthy, balancing the load across all nodes for optimal performance.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">8.5 Data Visualization</h3>
                     <div class="content">
                         <h8 style="margin-top: 0.5em;"><strong>Kibana:</strong></h8>
                         <ul>
-                           <li>Kibana connects to the Elasticsearch coordination node to access the stored transaction data. The coordination node provides Kibana with the necessary information to query the Elasticsearch cluster.</li>
-                           <li>Retrieving Data: Kibana retrieves data from Elasticsearch through queries, allowing users to search and filter the transaction records based on different criteria (e.g., transaction amount, time, or transaction ID).</li>
+                            <li>Kibana connects to the Elasticsearch coordination node to access the stored transaction data. The coordination node provides Kibana with the necessary information to query the Elasticsearch cluster.</li>
+                            <li>Retrieving Data: Kibana retrieves data from Elasticsearch through queries, allowing users to search and filter the transaction records based on different criteria (e.g., transaction amount, time, or transaction ID).</li>
                         </ul>
                         <h8 style="margin-top: 0.5em;"><strong>Dashboards and Visualizations:</strong></h8>
                         <ul>
-                           <li>Users can use Kibana to build dashboards, graphs, charts, and visualizations based on the stored transaction data. These visualizations provide insights into patterns and trends in the financial data.</li>
-                           <li>Kibana's interface supports creating real-time visualizations, enabling users to see live updates as new data is ingested into Elasticsearch.</li>
-                           <li>User Interaction: Through Kibana, users can explore the transaction data, create custom queries, and display real-time data in the form of visual dashboards, offering insights into financial transactions.</li>
+                            <li>Users can use Kibana to build dashboards, graphs, charts, and visualizations based on the stored transaction data. These visualizations provide insights into patterns and trends in the financial data.</li>
+                            <li>Kibana's interface supports creating real-time visualizations, enabling users to see live updates as new data is ingested into Elasticsearch.</li>
+                            <li>User Interaction: Through Kibana, users can explore the transaction data, create custom queries, and display real-time data in the form of visual dashboards, offering insights into financial transactions.</li>
                         </ul>
                     </div>
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">8.6 Data Flow Summary</h3>
@@ -982,7 +958,6 @@ cd elk_docker-main</code></pre>
                     </div>
                 </div>
             </section>
-
             <!-- 9. Directory Structure -->
             <section id="directory-structure" class="blog-section">
                 <h2 class="collapsible main-heading">9. Directory Structure</h2>
@@ -1009,20 +984,19 @@ cd elk_docker-main</code></pre>
      └── logstash.template.conf
 </code></pre>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.1 docker-compose.yml</h3>
                     <div class="content">
                         <h5 style="margin-top: 0.1em;"><strong>docker version</strong></h5>
                         <p>This <strong><i>docker-compose.yml</i></strong> file defines the multi-container setup for the ELK stack (Elasticsearch, Logstash, Kibana) integrated with Kafka, Zookeeper, and a Python-based banking application. The configuration specifies how the services interact with each other, defines network topologies, and ensures that volumes are used for persistent storage. Below is a detailed explanation of each section:</p>
-						<h5><strong>Volumes</strong></h5>
-						<p>These volumes store persistent data for various services, ensuring that data is retained even when containers are restarted.</p>
+                        <h5><strong>Volumes</strong></h5>
+                        <p>These volumes store persistent data for various services, ensuring that data is retained even when containers are restarted.</p>
                         <ul>
-                           <li><strong>certs:</strong> Stores SSL/TLS certificates used by Elasticsearch and Kibana to secure communication.</li>
-                           <li><strong>esdata-coord:</strong> Stores data for the Elasticsearch coordination node.</li>
-                           <li><strong>es-data-01, es-data-02, es-data-03:</strong> Store data for the respective Elasticsearch master nodes.</li>
-                           <li><strong>kibana-data-01, kibana-data-02:</strong> Store Kibana configuration data.</li>
+                            <li><strong>certs:</strong> Stores SSL/TLS certificates used by Elasticsearch and Kibana to secure communication.</li>
+                            <li><strong>esdata-coord:</strong> Stores data for the Elasticsearch coordination node.</li>
+                            <li><strong>es-data-01, es-data-02, es-data-03:</strong> Store data for the respective Elasticsearch master nodes.</li>
+                            <li><strong>kibana-data-01, kibana-data-02:</strong> Store Kibana configuration data.</li>
                         </ul>
-						<p>These volumes ensure data is not lost between container restarts and support the persistence of Elasticsearch indices, Kibana settings, and certificates.</p>
+                        <p>These volumes ensure data is not lost between container restarts and support the persistence of Elasticsearch indices, Kibana settings, and certificates.</p>
                         <div class="code-block">
                             <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
                             <pre><code class="language-yaml">volumes:
@@ -1042,14 +1016,13 @@ cd elk_docker-main</code></pre>
         driver: local
 </code></pre>
                         </div>
-
-						<h5><strong>Networks</strong></h5>
-						<p>Two custom bridge networks are created to isolate the ELK stack and Kafka services.</p>
+                        <h5><strong>Networks</strong></h5>
+                        <p>Two custom bridge networks are created to isolate the ELK stack and Kafka services.</p>
                         <ul>
                             <li><strong>elastic_network:</strong> Connects the ELK stack (Elasticsearch, Logstash, Kibana) containers.</li>
                             <li><strong>kafka_network:</strong> Connects Kafka, Zookeeper, and the Python banking app.</li>
                         </ul>
-						<p>The use of separate networks ensures proper service isolation while allowing containers to communicate across networks (e.g., Logstash needs to access both Kafka and Elasticsearch).</p>
+                        <p>The use of separate networks ensures proper service isolation while allowing containers to communicate across networks (e.g., Logstash needs to access both Kafka and Elasticsearch).</p>
                         <div class="code-block">
                             <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
                             <pre><code class="language-yaml">networks:
@@ -1059,26 +1032,24 @@ cd elk_docker-main</code></pre>
         driver: bridge
 </code></pre>
                         </div>
-
-						<h5><strong>Services</strong></h5>
-
-						    <h6 style="color: #149ddd; margin-top: 0.1em;"><strong>Setup Service</strong></h6>
+                        <h5><strong>Services</strong></h5>
+                        <h6 style="color: #149ddd; margin-top: 0.1em;"><strong>Setup Service</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Initializes the environment by generating SSL certificates for Elasticsearch and Kibana, handling security configurations.</li>
+                            <li><strong>Image:</strong> <i>docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}</i> — The official Elasticsearch image with a dynamic version.</li>
+                            <li><strong>Command:</strong> Runs a Bash script that:</li>
                             <ul>
-                                <li><strong>Purpose:</strong> Initializes the environment by generating SSL certificates for Elasticsearch and Kibana, handling security configurations.</li>
-                                <li><strong>Image:</strong> <i>docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}</i> — The official Elasticsearch image with a dynamic version.</li>
-                                <li><strong>Command:</strong> Runs a Bash script that:</li>
-                                <ul>
-                                    <li>Verifies required environment variables like <strong><i>ES_PASSWORD</i></strong> and <strong><i>KIBANA_PASSWORD.</i></strong></li>
-                                    <li>Generates a certificate authority (CA) and individual SSL certificates for Elasticsearch, Kibana, and other services.</li>
-                                    <li>Sets the Kibana system password.</li>
-                                </ul>
-                                <li><strong>Volumes:</strong> Uses certs volume to store generated certificates.</li>
-                                <li><strong>Networks:</strong> Connected to <strong><i>elastic_network.</i></strong></li>
-                                <li><strong>Healthcheck:</strong> Verifies that the required certificates exist before marking the service as healthy.</li>
+                                <li>Verifies required environment variables like <strong><i>ES_PASSWORD</i></strong> and <strong><i>KIBANA_PASSWORD.</i></strong></li>
+                                <li>Generates a certificate authority (CA) and individual SSL certificates for Elasticsearch, Kibana, and other services.</li>
+                                <li>Sets the Kibana system password.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">services:
+                            <li><strong>Volumes:</strong> Uses certs volume to store generated certificates.</li>
+                            <li><strong>Networks:</strong> Connected to <strong><i>elastic_network.</i></strong></li>
+                            <li><strong>Healthcheck:</strong> Verifies that the required certificates exist before marking the service as healthy.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">services:
     setup:
         image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
         networks:
@@ -1178,28 +1149,27 @@ cd elk_docker-main</code></pre>
             timeout: 5s
             retries: 120
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Elasticsearch Coordination Node (es-coord)</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Elasticsearch Coordination Node (es-coord)</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Routes client requests from Kibana and Logstash to the appropriate Elasticsearch master nodes. Does not store data itself.</li>
+                            <li><strong>Image:</strong> Elasticsearch image defined by <strong><i>${STACK_VERSION}</i></strong>.</li>
+                            <li><strong>Hostname:</strong> <strong><i>sheild-es-coord</i></strong> — Unique hostname for internal networking.</li>
+                            <li><strong>Ports:</strong> Exposes Elasticsearch on <strong><i>${ES_PORT}</i></strong> (typically 9200) for API interactions.</li>
+                            <li><strong>Volumes:</strong> Stores SSL certificates in certs and uses <strong><i>esdata-coord</i></strong> for data.</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Routes client requests from Kibana and Logstash to the appropriate Elasticsearch master nodes. Does not store data itself.</li>
-                                <li><strong>Image:</strong> Elasticsearch image defined by <strong><i>${STACK_VERSION}</i></strong>.</li>
-                                <li><strong>Hostname:</strong> <strong><i>sheild-es-coord</i></strong> — Unique hostname for internal networking.</li>
-                                <li><strong>Ports:</strong> Exposes Elasticsearch on <strong><i>${ES_PORT}</i></strong> (typically 9200) for API interactions.</li>
-                                <li><strong>Volumes:</strong> Stores SSL certificates in certs and uses <strong><i>esdata-coord</i></strong> for data.</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li><strong>node.name:</strong> Identifies the node.</li>
-                                    <li><strong>cluster.name:</strong> Defines the cluster name.</li>
-                                    <li><strong>discovery.seed_hosts:</strong> Specifies other master nodes for cluster discovery.</li>
-                                    <li><strong>xpack.security:</strong> Enables SSL and sets up certificates for secure communication.</li>
-                                </ul>
-                                <li><strong>Mem_limit:</strong> Restricts memory usage based on <strong><i>${ES_MEM_LIMIT}</i></strong> (to prevent excessive resource usage).</li>
-                                <li><strong>Healthcheck:</strong> Verifies that the service is available by testing the certificate-based secure connection.</li>
+                                <li><strong>node.name:</strong> Identifies the node.</li>
+                                <li><strong>cluster.name:</strong> Defines the cluster name.</li>
+                                <li><strong>discovery.seed_hosts:</strong> Specifies other master nodes for cluster discovery.</li>
+                                <li><strong>xpack.security:</strong> Enables SSL and sets up certificates for secure communication.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    es-coord:
+                            <li><strong>Mem_limit:</strong> Restricts memory usage based on <strong><i>${ES_MEM_LIMIT}</i></strong> (to prevent excessive resource usage).</li>
+                            <li><strong>Healthcheck:</strong> Verifies that the service is available by testing the certificate-based secure connection.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    es-coord:
         image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
         hostname: sheild-es-coord
         container_name: marvel-es-coord
@@ -1248,25 +1218,24 @@ cd elk_docker-main</code></pre>
             timeout: 10s
             retries: 120
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Elasticsearch Master Nodes (es-masternode-01, es-masternode-02, es-masternode-03)</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Elasticsearch Master Nodes (es-masternode-01, es-masternode-02, es-masternode-03)</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Store and manage the Elasticsearch data across the cluster. Each node is responsible for indexing and searching.</li>
+                            <li><strong>Image:</strong> Uses the same Elasticsearch image as the coordination node.</li>
+                            <li><strong>Ports:</strong> Exposes each node on different ports <strong><i>(9201, 9202, 9203)</i></strong>.</li>
+                            <li><strong>Volumes:</strong> Each node has a separate data volume <strong><i>(es-data-01, es-data-02, es-data-03)</i></strong> and shares the certs volume for SSL certificates.</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Store and manage the Elasticsearch data across the cluster. Each node is responsible for indexing and searching.</li>
-                                <li><strong>Image:</strong> Uses the same Elasticsearch image as the coordination node.</li>
-                                <li><strong>Ports:</strong> Exposes each node on different ports <strong><i>(9201, 9202, 9203)</i></strong>.</li>
-                                <li><strong>Volumes:</strong> Each node has a separate data volume <strong><i>(es-data-01, es-data-02, es-data-03)</i></strong> and shares the certs volume for SSL certificates.</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li>Similar to the coordination node, but with <strong><i>node.roles=master,data</i></strong> indicating this node handles both master and data roles.</li>
-                                    <li>Sets memory usage and configures SSL.</li>
-                                </ul>
-                                <li><strong>Mem_limit:</strong> Restricts memory usage based on <strong><i>${ES_MEM_LIMIT}</i></strong> (to prevent excessive resource usage).</li>
-                                <li><strong>Healthcheck:</strong> Verifies that the node is healthy by checking for a successful SSL connection on its respective port.</li>
+                                <li>Similar to the coordination node, but with <strong><i>node.roles=master,data</i></strong> indicating this node handles both master and data roles.</li>
+                                <li>Sets memory usage and configures SSL.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    es-masternode-01:
+                            <li><strong>Mem_limit:</strong> Restricts memory usage based on <strong><i>${ES_MEM_LIMIT}</i></strong> (to prevent excessive resource usage).</li>
+                            <li><strong>Healthcheck:</strong> Verifies that the node is healthy by checking for a successful SSL connection on its respective port.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    es-masternode-01:
         image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
         hostname: sheild-es-masternode-01
         container_name: marvel-es-masternode-01
@@ -1413,25 +1382,24 @@ cd elk_docker-main</code></pre>
             timeout: 10s
             retries: 120
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Kibana Instances (kibana-01, kibana-02)</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Kibana Instances (kibana-01, kibana-02)</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Provides a graphical interface for querying and visualizing data in Elasticsearch. There are two instances of Kibana for load balancing.</li>
+                            <li><strong>Image:</strong> Official Kibana image from Elastic.</li>
+                            <li><strong>Volumes:</strong> Uses the certs volume for certificates and <strong><i>kibana-data-01/kibana-data-02</i></strong> for persistent Kibana data.</li>
+                            <li><strong>Ports:</strong> Exposes Kibana on <strong><i>${KIBANA_PORT}</i></strong> (e.g., <i>5601</i> for <i>kibana-01</i> and <i>5602</i> for <i>kibana-02</i>).</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Provides a graphical interface for querying and visualizing data in Elasticsearch. There are two instances of Kibana for load balancing.</li>
-                                <li><strong>Image:</strong> Official Kibana image from Elastic.</li>
-                                <li><strong>Volumes:</strong> Uses the certs volume for certificates and <strong><i>kibana-data-01/kibana-data-02</i></strong> for persistent Kibana data.</li>
-                                <li><strong>Ports:</strong> Exposes Kibana on <strong><i>${KIBANA_PORT}</i></strong> (e.g., <i>5601</i> for <i>kibana-01</i> and <i>5602</i> for <i>kibana-02</i>).</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li><strong>SERVER_SSL_ENABLED:</strong> Enables SSL for secure communication.</li>
-                                    <li>Sets memory usage and configures SSL.</li>
-                                    <li><strong>ELASTICSEARCH_USERNAME</strong> and <strong>ELASTICSEARCH_PASSWORD:</strong> Used for secure access to Elasticsearch.</li>
-                                </ul>
-                                <li><strong>Healthcheck:</strong> Ensures Kibana is running and accessible via HTTPS.</li>
+                                <li><strong>SERVER_SSL_ENABLED:</strong> Enables SSL for secure communication.</li>
+                                <li>Sets memory usage and configures SSL.</li>
+                                <li><strong>ELASTICSEARCH_USERNAME</strong> and <strong>ELASTICSEARCH_PASSWORD:</strong> Used for secure access to Elasticsearch.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    kibana-01:
+                            <li><strong>Healthcheck:</strong> Ensures Kibana is running and accessible via HTTPS.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    kibana-01:
         image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
         hostname: sheild-kibana-01
         container_name: marvel-kibana-01
@@ -1503,25 +1471,24 @@ cd elk_docker-main</code></pre>
             timeout: 10s
             retries: 300
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Logstash</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Logstash</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Ingests data from Kafka and pushes it to Elasticsearch for indexing.</li>
+                            <li><strong>Build:</strong> Custom build from the logstash directory with the provided <strong><i>Dockerfile</i></strong>.</li>
+                            <li><strong>Networks:</strong> Connected to both <strong><i>elastic_network</i></strong> and <strong><i>kafka_network</i></strong> to ingest data from Kafka and forward it to Elasticsearch.</li>
+                            <li><strong>Ports:</strong> Exposes port <strong><i>5044</i></strong> for filebeat or other input connections.</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Ingests data from Kafka and pushes it to Elasticsearch for indexing.</li>
-                                <li><strong>Build:</strong> Custom build from the logstash directory with the provided <strong><i>Dockerfile</i></strong>.</li>
-                                <li><strong>Networks:</strong> Connected to both <strong><i>elastic_network</i></strong> and <strong><i>kafka_network</i></strong> to ingest data from Kafka and forward it to Elasticsearch.</li>
-                                <li><strong>Ports:</strong> Exposes port <strong><i>5044</i></strong> for filebeat or other input connections.</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li><strong>LS_JAVA_OPTS:</strong> Configures memory settings for Logstash.</li>
-                                    <li><strong>xpack.monitoring.enabled:</strong> Disables monitoring to reduce overhead.</li>
-                                    <li><strong>Command:</strong> Runs Logstash with a custom configuration file <strong><i>(logstash.conf)</i></strong> for Kafka-to-Elasticsearch processing.</li>
-                                </ul>
-                                <li><strong>Healthcheck:</strong> Verifies Logstash's connection to Elasticsearch.</li>
+                                <li><strong>LS_JAVA_OPTS:</strong> Configures memory settings for Logstash.</li>
+                                <li><strong>xpack.monitoring.enabled:</strong> Disables monitoring to reduce overhead.</li>
+                                <li><strong>Command:</strong> Runs Logstash with a custom configuration file <strong><i>(logstash.conf)</i></strong> for Kafka-to-Elasticsearch processing.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    logstash:
+                            <li><strong>Healthcheck:</strong> Verifies Logstash's connection to Elasticsearch.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    logstash:
         build:
             context: ./logstash
             dockerfile: Dockerfile
@@ -1553,23 +1520,22 @@ cd elk_docker-main</code></pre>
             timeout: 10s
             retries: 3
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Zookeeper</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Zookeeper</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Coordinates the Kafka brokers by managing the distributed configuration and ensuring fault-tolerance.</li>
+                            <li><strong>Image:</strong> Confluent's Zookeeper image.</li>
+                            <li><strong>Ports:</strong> Exposes Zookeeper on the default port <strong><i>(2181)</i></strong>.</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Coordinates the Kafka brokers by managing the distributed configuration and ensuring fault-tolerance.</li>
-                                <li><strong>Image:</strong> Confluent's Zookeeper image.</li>
-                                <li><strong>Ports:</strong> Exposes Zookeeper on the default port <strong><i>(2181)</i></strong>.</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li><strong>ZOOKEEPER_CLIENT_PORT:</strong> Specifies the Zookeeper client port.</li>
-                                    <li><strong>ZOOKEEPER_TICK_TIME:</strong> Defines the basic time unit for Zookeeper's heartbeat mechanism.</li>
-                                </ul>
-                                <li><strong>Healthcheck:</strong> Pings the Zookeeper server to ensure it is running.</li>
+                                <li><strong>ZOOKEEPER_CLIENT_PORT:</strong> Specifies the Zookeeper client port.</li>
+                                <li><strong>ZOOKEEPER_TICK_TIME:</strong> Defines the basic time unit for Zookeeper's heartbeat mechanism.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    zookeeper:
+                            <li><strong>Healthcheck:</strong> Pings the Zookeeper server to ensure it is running.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    zookeeper:
         image: confluentinc/cp-zookeeper:latest
         hostname: sheild-zookeeper
         container_name: marvel-zookeeper
@@ -1587,24 +1553,23 @@ cd elk_docker-main</code></pre>
           start_period: 30s
           timeout: 5s
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Kafka</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Kafka</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Acts as the message broker, receiving data from the Python banking app and allowing Logstash to consume the data.</li>
+                            <li><strong>Image:</strong> Confluent Kafka image.</li>
+                            <li><strong>Ports:</strong> Exposes Kafka on <strong><i>${KAFKA_PORT}</i></strong> for communication.</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Acts as the message broker, receiving data from the Python banking app and allowing Logstash to consume the data.</li>
-                                <li><strong>Image:</strong> Confluent Kafka image.</li>
-                                <li><strong>Ports:</strong> Exposes Kafka on <strong><i>${KAFKA_PORT}</i></strong> for communication.</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li><strong>KAFKA_ZOOKEEPER_CONNECT:</strong> Connects Kafka to Zookeeper.</li>
-                                    <li><strong>KAFKA_ADVERTISED_LISTENERS:</strong> Defines how Kafka is accessible from within and outside the Docker network.</li>
-                                    <li><strong>Command:</strong> Creates the Kafka topic <strong><i>(${KAFKA_TOPIC_1})</i></strong> before starting Kafka.</li>
-                                </ul>
-                                <li><strong>Healthcheck:</strong> Verifies Kafka is running and accessible.</li>
+                                <li><strong>KAFKA_ZOOKEEPER_CONNECT:</strong> Connects Kafka to Zookeeper.</li>
+                                <li><strong>KAFKA_ADVERTISED_LISTENERS:</strong> Defines how Kafka is accessible from within and outside the Docker network.</li>
+                                <li><strong>Command:</strong> Creates the Kafka topic <strong><i>(${KAFKA_TOPIC_1})</i></strong> before starting Kafka.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    kafka:
+                            <li><strong>Healthcheck:</strong> Verifies Kafka is running and accessible.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    kafka:
         hostname: sheild-kafka
         container_name: marvel-kafka
         depends_on:
@@ -1630,24 +1595,23 @@ cd elk_docker-main</code></pre>
             start_period: 60s
             timeout: 10s
 </code></pre>
-                            </div>
-
-						    <h6 style="color: #149ddd;"><strong>Python Banking Application (banking-app)</strong></h6>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Python Banking Application (banking-app)</strong></h6>
+                        <ul>
+                            <li><strong>Purpose:</strong> Simulates the data producer, generating synthetic banking transactions and sending them to Kafka.</li>
+                            <li><strong>Build:</strong> Built from the banking directory with the provided <i>Dockerfile</i>.</li>
+                            <li><strong>Networks:</strong> Connected to the <strong><i>kafka_network</i></strong> for communication with Kafka.</li>
+                            <li><strong>Environment Variables:</strong></li>
                             <ul>
-                                <li><strong>Purpose:</strong> Simulates the data producer, generating synthetic banking transactions and sending them to Kafka.</li>
-                                <li><strong>Build:</strong> Built from the banking directory with the provided <i>Dockerfile</i>.</li>
-                                <li><strong>Networks:</strong> Connected to the <strong><i>kafka_network</i></strong> for communication with Kafka.</li>
-                                <li><strong>Environment Variables:</strong></li>
-                                <ul>
-                                    <li><strong>KAFKA_BOOTSTRAP_SERVERS:</strong> Defines the Kafka bootstrap server address.</li>
-                                    <li><strong>KAFKA_TOPIC:</strong> Defines the Kafka topic where the banking transactions are published.</li>
-                                    <li><strong>Command:</strong> Runs the Python script <strong><i>(banking_app.py)</i></strong> to generate and publish data.</li>
-                                </ul>
-                                <li><strong>Healthcheck:</strong> Verifies Kafka connectivity to ensure proper data production.</li>
+                                <li><strong>KAFKA_BOOTSTRAP_SERVERS:</strong> Defines the Kafka bootstrap server address.</li>
+                                <li><strong>KAFKA_TOPIC:</strong> Defines the Kafka topic where the banking transactions are published.</li>
+                                <li><strong>Command:</strong> Runs the Python script <strong><i>(banking_app.py)</i></strong> to generate and publish data.</li>
                             </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">    banking-app:
+                            <li><strong>Healthcheck:</strong> Verifies Kafka connectivity to ensure proper data production.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">    banking-app:
         hostname: sheild-banking-app
         container_name: marvel-banking-app
         depends_on:
@@ -1669,9 +1633,8 @@ cd elk_docker-main</code></pre>
             timeout: 10s
             retries: 3
 </code></pre>
-                            </div>
+                        </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.2 .env [/project-diroctory]</h3>
                     <div class="content">
                         <p>The <strong><i>.env</i></strong> file is critical for configuring environment variables that are used throughout the <strong><i>docker-compose.yml</i></strong> file and Docker containers. It provides centralized settings that allow for dynamic configuration of the services without hardcoding values in the <strong><i>docker-compose.yml</i></strong> file. Here is a detailed breakdown of each environment variable used:</p>
@@ -1735,7 +1698,6 @@ KAFKA_TOPIC_2=ecom_transactions
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.3 .env [/project-directory/logstash]</h3>
                     <div class="content">
                         <p>This <strong><i>.env</i></strong> file under the logstash directory provides essential configuration details that Logstash uses to interact with both Elasticsearch and Kafka. These variables simplify the configuration of Logstash by centralizing key values that can be referenced within the Logstash configuration files (like <strong><i>logstash.conf</i></strong>). Here's a detailed breakdown of each environment variable:</p>
@@ -1744,11 +1706,15 @@ KAFKA_TOPIC_2=ecom_transactions
                             <li><strong>ES_PASSWORD:</strong> The password <strong><i>(elastic)</i></strong> for the Elasticsearch user. This ensures that Logstash can authenticate successfully with Elasticsearch when indexing data. This credential matches the one defined in the main <strong><i>.env</i></strong> file to ensure consistency across services.</li>
                             <li><strong>ES_PORT:</strong> Specifies the port number <strong><i>(9200)</i></strong> on which Elasticsearch is running. Logstash needs this to know where to send data for indexing. Port <strong><i>9200</i></strong> is the standard port for Elasticsearch’s REST API, used for both searching and indexing data.</li>
                             <li><strong>ES_INDEX_1</strong> and <strong>ES_INDEX_2:</strong> These variables define the Elasticsearch indices where Logstash will store ingested data.</li>
-                            <ul><li><strong>ES_INDEX_1 (bank_transactions):</strong> Used to store data related to banking transactions.</li></ul>
+                            <ul>
+                                <li><strong>ES_INDEX_1 (bank_transactions):</strong> Used to store data related to banking transactions.</li>
+                            </ul>
                             <li><strong>KAFKA_BOOTSTRAP_SERVERS:</strong> This defines the Kafka bootstrap server address <strong><i>(kafka:9092)</i></strong>, which Logstash connects to for consuming messages. The kafka hostname refers to the internal service name in the Docker network, and port <strong><i>9092</i></strong> is Kafka's default communication port.</li>
                             <li><strong>KAFKA_PORT:</strong> Specifies the port number <strong><i>(9200)</i></strong> for Kafka communication. This is the port on which Kafka listens for incoming connections from clients, such as Logstash, which subscribes to Kafka topics to ingest data.</li>
                             <li><strong>KAFKA_TOPIC_1 and KAFKA_TOPIC_2:</strong> These define the Kafka topics that Logstash will consume from.</li>
-                            <ul><li><strong>KAFKA_TOPIC_1 (bank_transactions):</strong> Logstash listens to this topic for banking transaction data generated by the Python banking app.</li></ul>
+                            <ul>
+                                <li><strong>KAFKA_TOPIC_1 (bank_transactions):</strong> Logstash listens to this topic for banking transaction data generated by the Python banking app.</li>
+                            </ul>
                         </ul>
                         <div class="code-block">
                             <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
@@ -1762,79 +1728,70 @@ KAFKA_TOPIC_1=bank_transactions
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.4 Dockerfile [/project-directory/logstash]</h3>
                     <div class="content">
                         <p>This <strong><i>Dockerfile</i></strong> defines the custom image and environment for running the Logstash service in your Docker-based ELK stack setup. The image builds on the official Logstash base image and customizes it by installing additional packages, copying configuration files, and setting up an entry point script. Here’s a detailed explanation of each instruction:</p>
-
-						<h6 style="color: #149ddd;"><strong>Base Image</strong></h6>
-                            <p>This line pulls the official Logstash image, version 8.15.0, from the Elastic repository. This base image contains the core Logstash functionality and is used as the starting point for building a custom Logstash container.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">FROM docker.elastic.co/logstash/logstash:8.15.0</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Working Directory</strong></h6>
-                            <p>Sets the working directory within the container to <strong><i>/usr/share/logstash/pipeline</i></strong>. This is where all subsequent commands (like copying files) will be executed and is the directory where Logstash expects its configuration files (pipelines) to be located.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">WORKDIR /usr/share/logstash/pipeline</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>User Privileges</strong></h6>
-                            <p>Switches to the root user to install additional system packages. The default user for the Logstash container does not have the necessary privileges to install packages, so this is required to perform system-level changes.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">USER root</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Package Installation</strong></h6>
-                            <p>Installs several packages using <strong><i>apt-get</i></strong>. These packages provide additional tools needed for debugging, networking, and environment variable substitution:</p>
-                            <ul>
-                                <li><strong>gettext-base:</strong>. Provides the envsubst tool, used for substituting environment variables into configuration files.</li>
-                                <li><strong>vim:</strong>. A text editor, useful for debugging inside the container.</li>
-                                <li><strong>net-tools, inetutils-ping:</strong>. Networking tools used to check network connections and interfaces.</li>
-                                <li><strong>netcat-traditional:</strong>. Used for testing network connections, often helpful for verifying Kafka connections and other network-based services.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">RUN apt-get update && apt-get install -y gettext-base vim net-tools inetutils-ping netcat-traditional</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Copy Environment and Configuration Files</strong></h6>
-                            <p>These commands copy important files from the local directory (where the <strong><i>Dockerfile</i></strong> is located) into the container’s working directory (/usr/share/logstash/pipeline):</p>
-                            <ul>
-                                <li><strong>.env:</strong> The environment variables file. These variables are referenced in the Logstash configuration file and are used to dynamically configure Logstash.</li>
-                                <li><strong>logstash.template.conf:</strong> The Logstash pipeline configuration template, which contains placeholders for environment variables (e.g., Kafka topic names, Elasticsearch credentials). This file defines how data flows from Kafka to Elasticsearch.</li>
-                                <li><strong>entrypoint.sh:</strong> A script that will be executed when the container starts. It dynamically substitutes environment variables into the <strong><i>logstash.template.conf</i></strong> to create a final <strong><i>logstash.conf</i></strong> file that Logstash will use.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">COPY .env /usr/share/logstash/pipeline
+                        <h6 style="color: #149ddd;"><strong>Base Image</strong></h6>
+                        <p>This line pulls the official Logstash image, version 8.15.0, from the Elastic repository. This base image contains the core Logstash functionality and is used as the starting point for building a custom Logstash container.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">FROM docker.elastic.co/logstash/logstash:8.15.0</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Working Directory</strong></h6>
+                        <p>Sets the working directory within the container to <strong><i>/usr/share/logstash/pipeline</i></strong>. This is where all subsequent commands (like copying files) will be executed and is the directory where Logstash expects its configuration files (pipelines) to be located.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">WORKDIR /usr/share/logstash/pipeline</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>User Privileges</strong></h6>
+                        <p>Switches to the root user to install additional system packages. The default user for the Logstash container does not have the necessary privileges to install packages, so this is required to perform system-level changes.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">USER root</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Package Installation</strong></h6>
+                        <p>Installs several packages using <strong><i>apt-get</i></strong>. These packages provide additional tools needed for debugging, networking, and environment variable substitution:</p>
+                        <ul>
+                            <li><strong>gettext-base:</strong>. Provides the envsubst tool, used for substituting environment variables into configuration files.</li>
+                            <li><strong>vim:</strong>. A text editor, useful for debugging inside the container.</li>
+                            <li><strong>net-tools, inetutils-ping:</strong>. Networking tools used to check network connections and interfaces.</li>
+                            <li><strong>netcat-traditional:</strong>. Used for testing network connections, often helpful for verifying Kafka connections and other network-based services.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">RUN apt-get update && apt-get install -y gettext-base vim net-tools inetutils-ping netcat-traditional</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Copy Environment and Configuration Files</strong></h6>
+                        <p>These commands copy important files from the local directory (where the <strong><i>Dockerfile</i></strong> is located) into the container’s working directory (/usr/share/logstash/pipeline):</p>
+                        <ul>
+                            <li><strong>.env:</strong> The environment variables file. These variables are referenced in the Logstash configuration file and are used to dynamically configure Logstash.</li>
+                            <li><strong>logstash.template.conf:</strong> The Logstash pipeline configuration template, which contains placeholders for environment variables (e.g., Kafka topic names, Elasticsearch credentials). This file defines how data flows from Kafka to Elasticsearch.</li>
+                            <li><strong>entrypoint.sh:</strong> A script that will be executed when the container starts. It dynamically substitutes environment variables into the <strong><i>logstash.template.conf</i></strong> to create a final <strong><i>logstash.conf</i></strong> file that Logstash will use.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">COPY .env /usr/share/logstash/pipeline
 COPY logstash.template.conf /usr/share/logstash/pipeline
 COPY entrypoint.sh /usr/share/logstash/pipeline
 </code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Set File Permissions</strong></h6>
-                            <p>Grants execution permissions (+x) to the entrypoint.sh script, allowing it to be run when the container starts.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">RUN chmod +x /usr/share/logstash/pipeline/entrypoint.sh</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Entry Point</strong></h6>
-                            <p>Sets the entrypoint for the container. This means that when the container is run, it will execute the <strong><i>entrypoint.sh</i></strong> script. The script is responsible for:</p>
-                            <ul>
-                                <li>Substituting environment variables in the <strong><i>logstash.template.conf</i></strong>.</li>
-                                <li>Creating the final <strong><i>logstash.conf</i></strong> configuration file.</li>
-                                <li>Starting Logstash with the generated configuration.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">ENTRYPOINT ["/usr/share/logstash/pipeline/entrypoint.sh"]</code></pre>
-                            </div>
-
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Set File Permissions</strong></h6>
+                        <p>Grants execution permissions (+x) to the entrypoint.sh script, allowing it to be run when the container starts.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">RUN chmod +x /usr/share/logstash/pipeline/entrypoint.sh</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Entry Point</strong></h6>
+                        <p>Sets the entrypoint for the container. This means that when the container is run, it will execute the <strong><i>entrypoint.sh</i></strong> script. The script is responsible for:</p>
+                        <ul>
+                            <li>Substituting environment variables in the <strong><i>logstash.template.conf</i></strong>.</li>
+                            <li>Creating the final <strong><i>logstash.conf</i></strong> configuration file.</li>
+                            <li>Starting Logstash with the generated configuration.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">ENTRYPOINT ["/usr/share/logstash/pipeline/entrypoint.sh"]</code></pre>
+                        </div>
                         <div class="code-block">
                             <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
                             <pre><code class="language-yaml"># Use Logstash base image
@@ -1862,7 +1819,6 @@ ENTRYPOINT ["/usr/share/logstash/pipeline/entrypoint.sh"]
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.5 entrypoint.sh [/project-directory/logstash]</h3>
                     <div class="content">
                         <p>The <strong><i>entrypoint.sh</i></strong> script is responsible for dynamically configuring Logstash at container startup. It reads environment variables from the <strong><i>.env</i></strong> file, substitutes these values into the Logstash configuration template, and then launches Logstash with the finalized configuration. This script is crucial for ensuring that Logstash operates correctly with dynamically set values (e.g., Kafka topics, Elasticsearch credentials).</p>
@@ -1891,20 +1847,19 @@ exec logstash -f /usr/share/logstash/pipeline/logstash.conf
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.6 logstash.template.conf [/project-directory/logstash]</h3>
                     <div class="content">
                         <p>The <strong><i>logstash.template.conf</i></strong> file is a Logstash configuration template that defines how data flows from Kafka (as the input) to Elasticsearch (as the output). This template uses placeholders (environment variables) to dynamically configure Kafka and Elasticsearch settings at runtime, making the setup flexible and adaptable to different environments without needing to modify the configuration file directly.</p>
-						<h6 style="color: #149ddd;"><strong>Input Section: Kafka</strong></h6>
-                            <p>This section defines Kafka as the input source for Logstash, meaning Logstash will consume data from Kafka topics. The key settings here are:</p>
-                            <ul>
-                                <li><strong>bootstrap_servers:</strong> The Kafka broker address is specified dynamically using the <strong><i>${KAFKA_BOOTSTRAP_SERVERS}</i></strong> environment variable. In this case, it points to the Kafka instance defined in the <strong><i>.env</i></strong> file (e.g., <strong><i>kafka:9092</i></strong>), allowing Logstash to connect to the Kafka cluster for consuming messages.</li>
-                                <li><strong>topics:</strong> Logstash will subscribe to the topic(s) specified in this configuration. Here, <strong><i>${KAFKA_TOPIC_1}</i></strong> is dynamically substituted with the actual Kafka topic name (e.g., <strong><i>bank_transactions</i></strong>), allowing Logstash to consume messages from the relevant Kafka topic. This topic is where the Python banking application sends the generated transaction data.</li>
-                                <li><strong>codec:</strong> Specifies the format of the incoming Kafka messages. In this case, json is used, meaning the data consumed from Kafka is in JSON format. Logstash will parse these messages as JSON objects, making it easy to extract and transform fields for further processing.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">input {
+                        <h6 style="color: #149ddd;"><strong>Input Section: Kafka</strong></h6>
+                        <p>This section defines Kafka as the input source for Logstash, meaning Logstash will consume data from Kafka topics. The key settings here are:</p>
+                        <ul>
+                            <li><strong>bootstrap_servers:</strong> The Kafka broker address is specified dynamically using the <strong><i>${KAFKA_BOOTSTRAP_SERVERS}</i></strong> environment variable. In this case, it points to the Kafka instance defined in the <strong><i>.env</i></strong> file (e.g., <strong><i>kafka:9092</i></strong>), allowing Logstash to connect to the Kafka cluster for consuming messages.</li>
+                            <li><strong>topics:</strong> Logstash will subscribe to the topic(s) specified in this configuration. Here, <strong><i>${KAFKA_TOPIC_1}</i></strong> is dynamically substituted with the actual Kafka topic name (e.g., <strong><i>bank_transactions</i></strong>), allowing Logstash to consume messages from the relevant Kafka topic. This topic is where the Python banking application sends the generated transaction data.</li>
+                            <li><strong>codec:</strong> Specifies the format of the incoming Kafka messages. In this case, json is used, meaning the data consumed from Kafka is in JSON format. Logstash will parse these messages as JSON objects, making it easy to extract and transform fields for further processing.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">input {
   kafka {
     bootstrap_servers => "${KAFKA_BOOTSTRAP_SERVERS}"
     topics => ["${KAFKA_TOPIC_1}"]
@@ -1912,19 +1867,19 @@ exec logstash -f /usr/share/logstash/pipeline/logstash.conf
   }
 }
 </code></pre>
-                            </div>
-						<h6 style="color: #149ddd;"><strong>Output Section: Elasticsearch</strong></h6>
-                            <p>This section defines Elasticsearch as the output destination for Logstash. After processing the data from Kafka, Logstash sends the data to Elasticsearch for indexing and storage. The key settings here are:</p>
-                            <ul>
-                                <li><strong>hosts:</strong> Specifies the Elasticsearch endpoint that Logstash will connect to. In this case, the host is the Elasticsearch coordination node <strong><i>(es-coord:9200)</i></strong>, which routes requests to the master nodes for indexing.</li>
-                                <li><strong>user</strong> and <strong>password:</strong> These are dynamically populated from the environment variables <strong><i>${ES_USER}</i></strong> and <strong><i>${ES_PASSWORD}</i></strong>, respectively. They provide the credentials for Logstash to authenticate with Elasticsearch, using the default user <strong><i>(elastic)</i></strong> and password.</li>
-                                <li><strong>ssl_enabled:</strong> Ensures that Logstash uses SSL/TLS encryption when communicating with Elasticsearch. This setting is crucial for securing communication between Logstash and Elasticsearch, especially when handling sensitive data.</li>
-                                <li><strong>cacert:</strong> Points to the certificate authority (CA) certificate file <strong><i>(/usr/share/logstash/config/certs/ca/ca.crt)</i></strong>, which Logstash uses to verify the authenticity of the SSL connection to Elasticsearch. This certificate was generated during the setup process.</li>
-                                <li><strong>index:</strong> Defines the Elasticsearch index where the processed data will be stored. The index name is dynamically set using the <strong><i>${ES_INDEX_1}</i></strong> environment variable, which could be something like <strong><i>bank_transactions</i></strong>. This makes it easy to route different data streams to different indices based on the environment or use case.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">output {
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Output Section: Elasticsearch</strong></h6>
+                        <p>This section defines Elasticsearch as the output destination for Logstash. After processing the data from Kafka, Logstash sends the data to Elasticsearch for indexing and storage. The key settings here are:</p>
+                        <ul>
+                            <li><strong>hosts:</strong> Specifies the Elasticsearch endpoint that Logstash will connect to. In this case, the host is the Elasticsearch coordination node <strong><i>(es-coord:9200)</i></strong>, which routes requests to the master nodes for indexing.</li>
+                            <li><strong>user</strong> and <strong>password:</strong> These are dynamically populated from the environment variables <strong><i>${ES_USER}</i></strong> and <strong><i>${ES_PASSWORD}</i></strong>, respectively. They provide the credentials for Logstash to authenticate with Elasticsearch, using the default user <strong><i>(elastic)</i></strong> and password.</li>
+                            <li><strong>ssl_enabled:</strong> Ensures that Logstash uses SSL/TLS encryption when communicating with Elasticsearch. This setting is crucial for securing communication between Logstash and Elasticsearch, especially when handling sensitive data.</li>
+                            <li><strong>cacert:</strong> Points to the certificate authority (CA) certificate file <strong><i>(/usr/share/logstash/config/certs/ca/ca.crt)</i></strong>, which Logstash uses to verify the authenticity of the SSL connection to Elasticsearch. This certificate was generated during the setup process.</li>
+                            <li><strong>index:</strong> Defines the Elasticsearch index where the processed data will be stored. The index name is dynamically set using the <strong><i>${ES_INDEX_1}</i></strong> environment variable, which could be something like <strong><i>bank_transactions</i></strong>. This makes it easy to route different data streams to different indices based on the environment or use case.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">output {
   elasticsearch {
     hosts => ["https://es-coord:9200"]
     user => "${ES_USER}"
@@ -1935,22 +1890,21 @@ exec logstash -f /usr/share/logstash/pipeline/logstash.conf
   }
 }
 </code></pre>
-                            </div>
+                        </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.7 .env [/project-directory/banking]</h3>
                     <div class="content">
                         <p>This <strong><i>.env</i></strong> file under the banking directory defines the environment variables used by the Python banking application. The app simulates the generation of synthetic transaction data and sends it to Kafka for further processing by Logstash and Elasticsearch. These variables allow the banking application to connect to Kafka and specify the Kafka topics where the generated data will be published. Below is a detailed explanation of each environment variable:</p>
-						<h6 style="color: #149ddd;"><strong>KAFKA_BOOTSTRAP_SERVERS:</strong></h6>
+                        <h6 style="color: #149ddd;"><strong>KAFKA_BOOTSTRAP_SERVERS:</strong></h6>
                         <ul>
                             <li>Specifies the address of the Kafka broker that the banking application will connect to. In this case, <strong><i>kafka:9092</i></strong> refers to the Kafka broker running within the Docker network (the service name kafka), and <strong><i>9092</i></strong> is the default Kafka port for communication.</li>
                             <li>This allows the banking application to send transaction data to Kafka for ingestion.</li>
                         </ul>
-						<h6 style="color: #149ddd;"><strong>KAFKA_PORT:</strong></h6>
+                        <h6 style="color: #149ddd;"><strong>KAFKA_PORT:</strong></h6>
                         <ul>
                             <li>Defines the port number <strong><i>(9092)</i></strong> for Kafka communication. This is the standard port Kafka uses to listen for incoming connections from producers (like the banking app) and consumers (like Logstash). This ensures that the app knows which port to use to send its data to Kafka.</li>
                         </ul>
-						<h6 style="color: #149ddd;"><strong>KAFKA_TOPIC_1:</strong></h6>
+                        <h6 style="color: #149ddd;"><strong>KAFKA_TOPIC_1:</strong></h6>
                         <ul>
                             <li>Specifies the first Kafka topic <strong><i>(bank_transactions)</i></strong> to which the banking application will publish its generated banking transaction data.</li>
                             <li>Kafka topics are logical channels where producers (like the banking app) send data, and consumers (like Logstash) retrieve it. The use of <strong><i>${KAFKA_TOPIC_1}</i></strong> ensures that all banking-related transaction data is sent to the <strong><i>bank_transactions</i></strong> topic. </li>
@@ -1963,89 +1917,79 @@ KAFKA_TOPIC_1=bank_transactions
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.8 Dockerfile [/project-directory/banking]</h3>
                     <div class="content">
                         <p>This <strong><i>Dockerfile</i></strong> defines the steps to build a Docker image for the Python banking application. The image is based on Python 3.9, and additional packages are installed to run the application, which generates and sends synthetic transaction data to Kafka. This <strong><i>Dockerfile</i></strong> includes steps to copy necessary files, install required Python libraries, and dynamically configure the Python script at runtime. Below is a detailed explanation of each instruction:</p>
-
-						<h6 style="color: #149ddd;"><strong>Base Image</strong></h6>
-                            <p>This pulls the official Python 3.9 image from Docker Hub. This image includes Python and the necessary tools to run Python applications, making it a good starting point for building the banking app. The Python banking application will run on this version of Python.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">FROM python:3.9</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Working Directory</strong></h6>
-                            <p>Sets the working directory inside the container to <strong><i>/usr/src/app</i></strong>. All subsequent commands, like copying files and running scripts, will be executed within this directory. This helps organize the application files within the container.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">WORKDIR /usr/src/app</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Copy the Requirements File</strong></h6>
-                            <p>Copies the <strong><i>requirements.txt</i></strong> file from the local directory (where the <strong><i>Dockerfile</i></strong> resides) into the container’s working directory <strong><i>(/usr/src/app)</i></strong>.	The <strong><i>requirements.txt</i></strong> file lists all the Python libraries the application needs.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">COPY requirements.txt .</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Install Python Packages</strong></h6>
-                            <ul>
-                                <li>Installs the required Python packages listed in <strong><i>requirements.txt</i></strong> using <strong><i>pip</i></strong>. The <strong><i>--no-cache-dir</i></strong> option prevents caching of installed packages, which reduces the size of the final image.</li>
-                                <li>These libraries might include packages for Kafka integration, JSON handling, and other dependencies required by the banking app.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">RUN pip install --no-cache-dir -r requirements.txt</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Install Additional System Packages</strong></h6>
-                            <p>Installs additional system packages needed for the container. These utilities are useful for debugging, networking, and environment variable substitution:</p>
-                            <ul>
-                                <li><strong>gettext-base:</strong> Provides the envsubst tool for substituting environment variables in files.</li>
-                                <li><strong>vim:</strong> A text editor for viewing/editing files inside the container.</li>
-                                <li><strong>net-tools, inetutils-ping:</strong> Networking tools to check connectivity, resolve DNS, and troubleshoot issues inside the container.</li>
-                                <li><strong>netcat-traditional:</strong> A utility for testing network connections (useful for debugging Kafka connections).</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">RUN apt-get update && apt-get install -y gettext-base vim net-tools inetutils-ping netcat-traditional</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Copy Files into the Container</strong></h6>
-                            <p>These commands copy the necessary files from the local directory into the container:</p>
-                            <ul>
-                                <li><strong>.env:</strong> The environment variables file that contains Kafka configuration (e.g., Kafka broker address and topic names).</li>
-                                <li><strong>banking_app.template.py:</strong> A template Python script for the banking app that generates synthetic transaction data and sends it to Kafka. This template will have placeholders for environment variables, such as Kafka topic names.</li>
-                                <li><strong>entrypoint.sh:</strong> A shell script that substitutes environment variables into the Python script and runs it when the container starts.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">COPY .env /usr/src/app
+                        <h6 style="color: #149ddd;"><strong>Base Image</strong></h6>
+                        <p>This pulls the official Python 3.9 image from Docker Hub. This image includes Python and the necessary tools to run Python applications, making it a good starting point for building the banking app. The Python banking application will run on this version of Python.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">FROM python:3.9</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Working Directory</strong></h6>
+                        <p>Sets the working directory inside the container to <strong><i>/usr/src/app</i></strong>. All subsequent commands, like copying files and running scripts, will be executed within this directory. This helps organize the application files within the container.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">WORKDIR /usr/src/app</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Copy the Requirements File</strong></h6>
+                        <p>Copies the <strong><i>requirements.txt</i></strong> file from the local directory (where the <strong><i>Dockerfile</i></strong> resides) into the container’s working directory <strong><i>(/usr/src/app)</i></strong>.	The <strong><i>requirements.txt</i></strong> file lists all the Python libraries the application needs.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">COPY requirements.txt .</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Install Python Packages</strong></h6>
+                        <ul>
+                            <li>Installs the required Python packages listed in <strong><i>requirements.txt</i></strong> using <strong><i>pip</i></strong>. The <strong><i>--no-cache-dir</i></strong> option prevents caching of installed packages, which reduces the size of the final image.</li>
+                            <li>These libraries might include packages for Kafka integration, JSON handling, and other dependencies required by the banking app.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">RUN pip install --no-cache-dir -r requirements.txt</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Install Additional System Packages</strong></h6>
+                        <p>Installs additional system packages needed for the container. These utilities are useful for debugging, networking, and environment variable substitution:</p>
+                        <ul>
+                            <li><strong>gettext-base:</strong> Provides the envsubst tool for substituting environment variables in files.</li>
+                            <li><strong>vim:</strong> A text editor for viewing/editing files inside the container.</li>
+                            <li><strong>net-tools, inetutils-ping:</strong> Networking tools to check connectivity, resolve DNS, and troubleshoot issues inside the container.</li>
+                            <li><strong>netcat-traditional:</strong> A utility for testing network connections (useful for debugging Kafka connections).</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">RUN apt-get update && apt-get install -y gettext-base vim net-tools inetutils-ping netcat-traditional</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Copy Files into the Container</strong></h6>
+                        <p>These commands copy the necessary files from the local directory into the container:</p>
+                        <ul>
+                            <li><strong>.env:</strong> The environment variables file that contains Kafka configuration (e.g., Kafka broker address and topic names).</li>
+                            <li><strong>banking_app.template.py:</strong> A template Python script for the banking app that generates synthetic transaction data and sends it to Kafka. This template will have placeholders for environment variables, such as Kafka topic names.</li>
+                            <li><strong>entrypoint.sh:</strong> A shell script that substitutes environment variables into the Python script and runs it when the container starts.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">COPY .env /usr/src/app
 COPY banking_app.template.py /usr/src/app
 COPY entrypoint.sh /usr/src/app
 </code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Set File Permissions</strong></h6>
-                            <p>Grants execution permissions to the <strong><i>entrypoint.sh</i></strong> script, allowing it to be executed when the container starts. This is necessary because the script will handle environment variable substitution and the execution of the Python application.</p>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">RUN chmod +x /usr/src/app/entrypoint.sh</code></pre>
-                            </div>
-
-						<h6 style="color: #149ddd;"><strong>Entry Point</strong></h6>
-                            <p>Specifies the entry point for the container. When the container starts, it will execute the <strong><i>entrypoint.sh</i></strong> script.</p>
-							<p>This script will:</p>
-                            <ul>
-                                <li>Substitute environment variables into the Python template script <strong><i>(banking_app.template.py)</i></strong>.</li>
-                                <li>Run the finalized Python script, which generates and sends synthetic transaction data to Kafka.</li>
-                            </ul>
-                            <div class="code-block">
-                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                <pre><code class="language-yaml">ENTRYPOINT ["/usr/src/app/entrypoint.sh"]</code></pre>
-                            </div>
-
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Set File Permissions</strong></h6>
+                        <p>Grants execution permissions to the <strong><i>entrypoint.sh</i></strong> script, allowing it to be executed when the container starts. This is necessary because the script will handle environment variable substitution and the execution of the Python application.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">RUN chmod +x /usr/src/app/entrypoint.sh</code></pre>
+                        </div>
+                        <h6 style="color: #149ddd;"><strong>Entry Point</strong></h6>
+                        <p>Specifies the entry point for the container. When the container starts, it will execute the <strong><i>entrypoint.sh</i></strong> script.</p>
+                        <p>This script will:</p>
+                        <ul>
+                            <li>Substitute environment variables into the Python template script <strong><i>(banking_app.template.py)</i></strong>.</li>
+                            <li>Run the finalized Python script, which generates and sends synthetic transaction data to Kafka.</li>
+                        </ul>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-yaml">ENTRYPOINT ["/usr/src/app/entrypoint.sh"]</code></pre>
+                        </div>
                         <div class="code-block">
                             <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
                             <pre><code class="language-yaml"># Use official Python image
@@ -2076,20 +2020,27 @@ ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.9 entrypoint.sh [/project-directory/banking]</h3>
                     <div class="content">
                         <p>The <strong><i>entrypoint.sh</i></strong> script is responsible for dynamically configuring the banking application at container startup. It reads environment variables from the <strong><i>.env</i></strong> file, substitutes these values into the Python application template, and then launches the application with the finalized configuration. This script is crucial for ensuring that the banking application operates correctly with dynamically set values.</p>
                         <p>The <strong><i>entrypoint.sh</i></strong> script performs the following key tasks:</p>
                         <ol>
                             <li>Exports environment variables from the <strong><i>.env</i></strong> file, making them available for use in the script.</li>
-                                <ul><li>The script reads the <strong><i>.env</i></strong> file and exports its variables to the environment. This ensures that all necessary configuration values are available as environment variables.</li></ul>
+                            <ul>
+                                <li>The script reads the <strong><i>.env</i></strong> file and exports its variables to the environment. This ensures that all necessary configuration values are available as environment variables.</li>
+                            </ul>
                             <li>Substitutes the environment variables into the Python application template <strong><i>(banking_app.template.py)</i></strong>, generating the final <strong><i>banking_app.py</i></strong> file.</li>
-                                <ul><li>Using the envsubst command, the script replaces placeholders in the template file with actual environment variable values, creating a fully configured <strong><i>banking_app.py</i></strong> file.</li></ul>
+                            <ul>
+                                <li>Using the envsubst command, the script replaces placeholders in the template file with actual environment variable values, creating a fully configured <strong><i>banking_app.py</i></strong> file.</li>
+                            </ul>
                             <li>Ensures correct permissions on the generated Python file so that it can be executed.</li>
-                                <ul><li>The script sets execute permissions on the <strong><i>banking_app.py</i></strong> file to ensure it can be run as a script.</li></ul>
+                            <ul>
+                                <li>The script sets execute permissions on the <strong><i>banking_app.py</i></strong> file to ensure it can be run as a script.</li>
+                            </ul>
                             <li>Starts the Python application with the generated configuration file.</li>
-                                <ul><li>Finally, the script executes the <strong><i>banking_app.py</i></strong> file using Python, launching the banking application with the dynamically configured settings.</li></ul>
+                            <ul>
+                                <li>Finally, the script executes the <strong><i>banking_app.py</i></strong> file using Python, launching the banking application with the dynamically configured settings.</li>
+                            </ul>
                         </ol>
                         <div class="code-block">
                             <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
@@ -2112,21 +2063,19 @@ exec python3 banking_app.py
 </code></pre>
                         </div>
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.10 banking_app.template.py [/project-directory/banking]</h3>
                     <div class="content">
                         <p>The banking_app.template.py script is a template for generating a Python script that simulates banking transactions and publishes them to a Kafka topic. The environment variables in this template are replaced by the entrypoint.sh script at container startup, ensuring that the application is configured with the correct values. This script is crucial for generating realistic transaction data and testing the integration with Kafka.</p>
                         <p>The banking_app.template.py script performs the following key tasks:</p>
-
                         <ol>
                             <li>Imports necessary libraries and initializes the logger.</li>
-                                <ul>
-                                    <li><strong>Purpose:</strong> Imports various libraries required for generating transaction data, handling dates and times, logging, and interacting with Kafka.</li>
-                                    <li><strong>Logger Initialization:</strong> Sets up a logger to log information and errors to a file named banking_app.log.</li>
-                                </ul>
-                                <div class="code-block">
-                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                    <pre><code class="language-bash">import csv
+                            <ul>
+                                <li><strong>Purpose:</strong> Imports various libraries required for generating transaction data, handling dates and times, logging, and interacting with Kafka.</li>
+                                <li><strong>Logger Initialization:</strong> Sets up a logger to log information and errors to a file named banking_app.log.</li>
+                            </ul>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">import csv
 import json
 import time
 import random
@@ -2141,15 +2090,14 @@ from random import choice, uniform, randint
 logging.basicConfig(filename="banking_app.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 </code></pre>
-                                </div>
-
+                            </div>
                             <li>Defines country, currency, and city data.</li>
-                                <ul>
-                                    <li><strong>Purpose:</strong> Defines a dictionary COUNTRIES_DATA containing information about different countries, including their currency, cities, and country codes.</li>
-                                </ul>
-                                <div class="code-block">
-                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                    <pre><code class="language-bash"># Initialize Faker instance
+                            <ul>
+                                <li><strong>Purpose:</strong> Defines a dictionary COUNTRIES_DATA containing information about different countries, including their currency, cities, and country codes.</li>
+                            </ul>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash"># Initialize Faker instance
 fake = Faker()
 
 # Define Country, Currency, and City Data
@@ -2271,21 +2219,20 @@ COUNTRIES_DATA = {
     }
 }
 </code></pre>
-                                </div>
-
+                            </div>
                             <li>Generates a single banking transaction record.</li>
-                                <ul>
-                                    <li><strong>Purpose:</strong> The generate_transaction function creates a synthetic transaction record with various details such as transaction ID, timestamp, response time, mode of transaction, currency, country, city, transaction amount, transaction type, account type, payment method, transaction status, customer info, and merchant info.</li>
-                                </ul>
-                                <div class="code-block">
-                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                    <pre><code class="language-bash"># Function to generate a single banking transaction record
+                            <ul>
+                                <li><strong>Purpose:</strong> The generate_transaction function creates a synthetic transaction record with various details such as transaction ID, timestamp, response time, mode of transaction, currency, country, city, transaction amount, transaction type, account type, payment method, transaction status, customer info, and merchant info.</li>
+                            </ul>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash"># Function to generate a single banking transaction record
 def generate_transaction():
     country = choice(list(COUNTRIES_DATA.keys()))
     city = choice(COUNTRIES_DATA[country]['cities'])
     currency = COUNTRIES_DATA[country]['currency']
     country_code = COUNTRIES_DATA[country]['country_code']
-    
+
     transaction = {
         "transaction_id": fake.uuid4(),
         "transaction_timestamp": fake.iso8601(),
@@ -2316,16 +2263,15 @@ def generate_transaction():
     }
     return transaction
 </code></pre>
-                                </div>
-
+                            </div>
                             <li>Sets up Kafka producer.</li>
-                                <ul>
-                                    <li><strong>Purpose:</strong> The create_kafka_producer function attempts to create a Kafka producer that connects to the Kafka broker specified by the environment variable ${KAFKA_BOOTSTRAP_SERVERS}.</li>
-                                    <li><strong>Retries:</strong> It retries the connection up to 5 times if the initial connection fails, logging warnings and errors as needed.</li>
-                                </ul>
-                                <div class="code-block">
-                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                    <pre><code class="language-bash"># Kafka setup
+                            <ul>
+                                <li><strong>Purpose:</strong> The create_kafka_producer function attempts to create a Kafka producer that connects to the Kafka broker specified by the environment variable ${KAFKA_BOOTSTRAP_SERVERS}.</li>
+                                <li><strong>Retries:</strong> It retries the connection up to 5 times if the initial connection fails, logging warnings and errors as needed.</li>
+                            </ul>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash"># Kafka setup
 def create_kafka_producer():
     retries = 5
     producer = None
@@ -2344,15 +2290,14 @@ def create_kafka_producer():
         raise ConnectionError("Failed to connect to Kafka after multiple retries.")
     return producer
 </code></pre>
-                                </div>
-
+                            </div>
                             <li>Publishes data to Kafka.</li>
-                                 <ul>
-                                    <li><strong>Purpose:</strong> The publish_to_kafka function sends the generated transaction data to a specified Kafka topic and flushes the producer to ensure the data is sent. It logs the success or failure of each publish attempt.</li>
-                                </ul>
-                                <div class="code-block">
-                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                    <pre><code class="language-bash"># Function to publish data to Kafka
+                            <ul>
+                                <li><strong>Purpose:</strong> The publish_to_kafka function sends the generated transaction data to a specified Kafka topic and flushes the producer to ensure the data is sent. It logs the success or failure of each publish attempt.</li>
+                            </ul>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash"># Function to publish data to Kafka
 def publish_to_kafka(producer, topic, message):
     try:
         producer.send(topic, message)
@@ -2361,17 +2306,16 @@ def publish_to_kafka(producer, topic, message):
     except Exception as e:
         logger.error(f"Failed to publish message to Kafka: {str(e)}")
 </code></pre>
-                                </div>
-
-                           <li>Main execution block.</li>
-                                <ul>
-                                    <li><strong>Purpose:</strong> The script creates a Kafka producer and enters an infinite loop where it generates and publishes batches of 100 transactions to Kafka.</li>
-                                    <li><strong>Publishing Transactions:</strong> For each transaction in the batch, it publishes the transaction to the Kafka topic specified by the environment variable ${KAFKA_TOPIC_1} and waits for 0.5 seconds before publishing the next transaction.</li>
-                                    <li><strong>Error Handling:</strong> The script handles interruptions and errors gracefully, logging an appropriate message if the script is interrupted by the user or if an error occurs.</li>
-                                </ul>
-                                <div class="code-block">
-                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
-                                    <pre><code class="language-bash">if __name__ == "__main__":
+                            </div>
+                            <li>Main execution block.</li>
+                            <ul>
+                                <li><strong>Purpose:</strong> The script creates a Kafka producer and enters an infinite loop where it generates and publishes batches of 100 transactions to Kafka.</li>
+                                <li><strong>Publishing Transactions:</strong> For each transaction in the batch, it publishes the transaction to the Kafka topic specified by the environment variable ${KAFKA_TOPIC_1} and waits for 0.5 seconds before publishing the next transaction.</li>
+                                <li><strong>Error Handling:</strong> The script handles interruptions and errors gracefully, logging an appropriate message if the script is interrupted by the user or if an error occurs.</li>
+                            </ul>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">if __name__ == "__main__":
     producer = create_kafka_producer()
 
     while True:
@@ -2387,11 +2331,9 @@ def publish_to_kafka(producer, topic, message):
         except Exception as e:
             logger.error(f"An error occurred: {str(e)}")
 </code></pre>
-                                </div>
+                            </div>
                         </ol>
-
                     </div>
-
                     <h3 style="margin-top: 0.5em;" class="collapsible subheading">9.11 requirements.txt [/project-directory/banking]</h3>
                     <div class="content">
                         <p>The requirements.txt file is a vital part of the project, listing all the Python dependencies needed for the application. It ensures that anyone working on the project can easily install the necessary packages, fostering a consistent development environment.</p>
@@ -2404,140 +2346,135 @@ faker
 </code></pre>
                         </div>
                     </div>
-
                 </div>
             </section>
-
         </main>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
-
         <script>
-          // 1. Collapsible sections functionality. single click expands, double click collapses
-          document.querySelectorAll('.collapsible').forEach(coll => {
-            const content = coll.nextElementSibling;
-          
-            coll.addEventListener('click', function () {
-              // Expand on single click only if not already expanded
-              if (content.style.display !== 'block') {
-                this.classList.add('active');
-                content.style.display = 'block';
-              }
-            });
-          
-            coll.addEventListener('dblclick', function () {
-              // Collapse on double click
-              this.classList.remove('active');
-              content.style.display = 'none';
-            });
-          });
-        
-          // 2. Copy button functionality
-          document.querySelectorAll('.copy-button').forEach(button => {
-            button.addEventListener('click', () => {
-              const codeBlock = button.nextElementSibling.querySelector('code');
-              if (codeBlock) {
-                navigator.clipboard.writeText(codeBlock.textContent.trim());
-                button.textContent = 'Copied!';
-                setTimeout(() => button.textContent = 'Copy', 2000);
-              }
-            });
-          });
-        
-          // 3. Enhanced smooth scroll + expand collapsible section
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-              const target = document.querySelector(this.getAttribute('href'));
-              if (!target) return;
-        
-              e.preventDefault();
-        
-              // Scroll into view
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-        
-              // Expand collapsible inside target section
-              const collapsibleHeading = target.querySelector('.collapsible');
-              if (collapsibleHeading) {
-                const content = collapsibleHeading.nextElementSibling;
-                const isCollapsed = content && content.style.display !== 'block';
-        
-                if (isCollapsed) {
-                  collapsibleHeading.classList.add('active');
+            // 1. Collapsible sections functionality. single click expands, double click collapses
+            document.querySelectorAll('.collapsible').forEach(coll => {
+              const content = coll.nextElementSibling;
+
+              coll.addEventListener('click', function () {
+                // Expand on single click only if not already expanded
+                if (content.style.display !== 'block') {
+                  this.classList.add('active');
                   content.style.display = 'block';
                 }
-              }
+              });
+
+              coll.addEventListener('dblclick', function () {
+                // Collapse on double click
+                this.classList.remove('active');
+                content.style.display = 'none';
+              });
             });
-          });
-        
-          // 4. Optional: Submenu toggles (keep as is)
-          document.addEventListener('DOMContentLoaded', function () {
-            const toggleSubmenuLinks = document.querySelectorAll('.toggle-submenu');
-            toggleSubmenuLinks.forEach(link => {
-              link.addEventListener('click', function () {
-                const submenu = this.nextElementSibling;
-                if (submenu) {
-                  submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+
+            // 2. Copy button functionality
+            document.querySelectorAll('.copy-button').forEach(button => {
+              button.addEventListener('click', () => {
+                const codeBlock = button.nextElementSibling.querySelector('code');
+                if (codeBlock) {
+                  navigator.clipboard.writeText(codeBlock.textContent.trim());
+                  button.textContent = 'Copied!';
+                  setTimeout(() => button.textContent = 'Copy', 2000);
                 }
               });
             });
-          });
 
-          // 5. Track last click timestamps per sidebar link
-          const clickTimestamps = {};
-        
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-              const href = this.getAttribute('href');
-              const target = document.querySelector(href);
-              if (!target) return;
-        
-              e.preventDefault();
-        
-              const now = Date.now();
-              const lastClick = clickTimestamps[href] || 0;
-              const timeSinceLastClick = now - lastClick;
-              clickTimestamps[href] = now;
-        
-              // Scroll to the target section
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-        
-              const collapsible = target.querySelector('.collapsible');
-              const content = collapsible ? collapsible.nextElementSibling : null;
-        
-              if (collapsible && content) {
-                // Collapse all other collapsible sections
-                document.querySelectorAll('.collapsible').forEach(other => {
-                  const otherContent = other.nextElementSibling;
-                  if (other !== collapsible && otherContent) {
-                    other.classList.remove('active');
-                    otherContent.style.display = 'none';
-                  }
+            // 3. Enhanced smooth scroll + expand collapsible section
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+
+                e.preventDefault();
+
+                // Scroll into view
+                target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
                 });
-        
-                // Double-click: collapse target
-                if (timeSinceLastClick < 300) {
-                  collapsible.classList.remove('active');
-                  content.style.display = 'none';
-                } else {
-                  // Single-click: expand if not already
-                  if (content.style.display !== 'block') {
-                    collapsible.classList.add('active');
+
+                // Expand collapsible inside target section
+                const collapsibleHeading = target.querySelector('.collapsible');
+                if (collapsibleHeading) {
+                  const content = collapsibleHeading.nextElementSibling;
+                  const isCollapsed = content && content.style.display !== 'block';
+
+                  if (isCollapsed) {
+                    collapsibleHeading.classList.add('active');
                     content.style.display = 'block';
                   }
                 }
-              }
+              });
             });
-          });
+
+            // 4. Optional: Submenu toggles (keep as is)
+            document.addEventListener('DOMContentLoaded', function () {
+              const toggleSubmenuLinks = document.querySelectorAll('.toggle-submenu');
+              toggleSubmenuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                  const submenu = this.nextElementSibling;
+                  if (submenu) {
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                  }
+                });
+              });
+            });
+
+            // 5. Track last click timestamps per sidebar link
+            const clickTimestamps = {};
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
+                if (!target) return;
+
+                e.preventDefault();
+
+                const now = Date.now();
+                const lastClick = clickTimestamps[href] || 0;
+                const timeSinceLastClick = now - lastClick;
+                clickTimestamps[href] = now;
+
+                // Scroll to the target section
+                target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+
+                const collapsible = target.querySelector('.collapsible');
+                const content = collapsible ? collapsible.nextElementSibling : null;
+
+                if (collapsible && content) {
+                  // Collapse all other collapsible sections
+                  document.querySelectorAll('.collapsible').forEach(other => {
+                    const otherContent = other.nextElementSibling;
+                    if (other !== collapsible && otherContent) {
+                      other.classList.remove('active');
+                      otherContent.style.display = 'none';
+                    }
+                  });
+
+                  // Double-click: collapse target
+                  if (timeSinceLastClick < 300) {
+                    collapsible.classList.remove('active');
+                    content.style.display = 'none';
+                  } else {
+                    // Single-click: expand if not already
+                    if (content.style.display !== 'block') {
+                      collapsible.classList.add('active');
+                      content.style.display = 'block';
+                    }
+                  }
+                }
+              });
+            });
 
         </script>
-
     </body>
 </html>
