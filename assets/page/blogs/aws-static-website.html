@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>TechSavvy</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <!-- Favicons -->
+        <link href="../../img/my_logo.png" rel="icon">
+        <link href="../../img/apple-touch-icon.png" rel="apple-touch-icon">
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Custom Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons.min.css">
+        <!-- Vendor CSS Files -->
+        <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="../../vendor/aos/aos.css" rel="stylesheet">
+        <link href="../../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="../../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+        <!-- Main CSS File -->
+        <link href="../../css/blog_page.css" rel="stylesheet">
+        <!-- Embedded table styles -->
+        <style>
+          .content-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--default-font);
+            color: var(--default-color);
+            margin-bottom: 1.5rem;
+          }
+          .content-table th,
+          .content-table td {
+            border: 1px solid #adb5bd;
+            padding: 0.75rem 1rem;
+            text-align: left;
+          }
+          .content-table th {
+            background-color: #5A5A5A;
+            color: #adb5bd;
+            font-family: var(--heading-font);
+            font-size: 1rem;
+            font-weight: bold;
+          }
+          .content-table td {
+            background-color: var(--surface-color);
+            font-size: 0.95rem;
+          }
+          .content-table tr:nth-child(even) td {
+            background-color: var(--background-color);
+          }
+        </style>
+
+    </head>
+    <body class="blog-page">
+        <header class="sidebar dark-background">
+            <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+                <h1 class="sitename">
+                    <i class="bi bi-house navicon"></i><a href="../../../index.html" class="stretched-link">Home</a>
+                </h1>
+            </a>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <h2 class="sitename" style="text-align: center; margin: 20px auto;">CONTENTS</h2>
+                    <li> <a href="#overview" class="active">Overview</a> </li>
+                    <li> <a href="#prerequisite">Prerequisite</a> </li>
+                    <li> <a href="#aws-cli">AWS CLI</a> </li>
+                    <li> <a href="#terraform-configuration">Terraform Configuration</a> </li>
+                    <li> <a href="#iac">Deploying Infrastructure Using Terraform</a> </li>
+                    <li> <a href="#domain">Domain and DNS Configuration</a> </li>
+                    <li> <a href="#cautions">Important Considerations and Cautions</a> </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main-content">
+            <!-- Blog Section -->
+            <section id="blog" class="blog blog-section" style="justify-content: left;  padding: 0px 0;">
+                <div>
+                    <h1 style="font-size: 50px; border-bottom: none; text-decoration: none;" class="h1 dark-background">AWS Static Website Deployment Using Terraform</h1>
+                </div>
+            </section>
+
+            <!-- 1. OVERVIEW -->
+            <section id="overview" class="blog-section">
+                <h2 class="collapsible main-heading">1. OVERVIEW</h2>
+                <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">This documentation provides a step-by-step guide for deploying a static personal or portfolio website on an AWS EC2 instance using Terraform. The deployment process follows Infrastructure-as-Code (IaC) principles to automate the provisioning of cloud resources, configuration of Nginx as the web server, and synchronization of website content directly from a public GitHub repository.</p>
+                    <p style="text-align: justify; margin-bottom: 20px;">The setup is designed to offer a lightweight and cost-effective solution for hosting personal websites without relying on traditional web hosting platforms. It also includes optional enhancements such as integrating a custom domain and enabling HTTPS with free SSL certificates via Cloudflare. This approach demonstrates how cloud infrastructure, version control, and automation can be combined to create a professional and scalable web hosting environment suitable for developers, students, and tech professionals showcasing their work online.</p>
+                </div>
+            </section>
+
+            <!-- 2. PREREQUISITE -->
+            <section id="prerequisite" class="blog-section">
+                <h2 class="collapsible main-heading">2. PREREQUISITE</h2>
+                <div class="content">
+                    <!-- Subheading: Prerequisites -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">2.1 Access to AWS Account</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>You must have access to the AWS Management Console.</li>
+                            <li><i class="bi"></i>A dedicated IAM user should be created for remote access and development purposes, rather than using the root account.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Subheading: Prerequisites -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">2.2 Terraform</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Terraform must be installed and properly configured on your local system.</li>
+                            <li><i class="bi"></i>If Terraform is not already installed, refer to the official installation guide: <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli">Terraform downloads page</a>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Subheading: Prerequisites -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">2.3 Code Editor</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Any code editor can be used to work with the Terraform scripts and website files.</li>
+                            <li><i class="bi"></i>Visual Studio Code is recommended for ease of use and community support. To get started  <a href="https://code.visualstudio.com/docs/getstarted/getting-started">click here</a>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Subheading: Prerequisites -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">2.4 Website Package or Template</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>If you are proficient in front-end development, you can build your website manually using HTML, CSS, JavaScript, and other relevant technologies.</li>
+                            <li><i class="bi"></i>Alternatively, you may download free website templates from trusted sources online. These templates typically include prebuilt HTML, CSS, and JavaScript files.</li>
+                            <li><i class="bi"></i>Customize the template by editing the existing files to suit your personal or professional website requirements.</li>
+                            <li><i class="bi"></i>Upload your modified website files to a public GitHub repository. This repository will later be referenced by the Terraform deployment script.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 3. AWS CLI -->
+            <section id="aws-cli" class="blog-section">
+                <h2 class="collapsible main-heading">3.	AWS CLI</h2>
+                <div class="content">
+                    <!-- Subheading: 3.	AWS CLI -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">3.1 Install or Update AWS CLI</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Download the <a href="https://awscli.amazonaws.com/AWSCLIV2.msi">AWS CLI installer </a>for Windows (64-bit).</li>
+                            <li><i class="bi"></i>To install via command line:</li>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">C:\> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi</code></pre>
+                            </div>
+                            <li><i class="bi"></i>For a silent installation (no user prompts):</li>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">C:\> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi /qn</code></pre>
+                            </div>
+                        </ul>
+					</div>
+
+                    <!-- Subheading: 3.	AWS CLI -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">3.2 Configure AWS CLI</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>After installation, configure your AWS CLI using your IAM credentials:</li>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">C:\> aws configure
+AWS Access Key ID [None]: XXXXXXXXXXXXXXXX
+AWS Secret Access Key [None]: XXXXXXXXXXXXXXXXXXXXXXXXXXX
+Default region name [None]: eu-north-1
+Default output format [None]: json
+</code></pre>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <!-- Subheading: 3.	AWS CLI -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">3.3 Verify Installation</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Run the following command to check if AWS CLI is correctly installed:</li>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">C:\> aws --version</code></pre>
+                            </div>
+                            <p style="margin-top: 0.5em;"><strong>Expected output:</strong></p>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">aws-cli/2.19.1 Python/3.11.6 Windows/10 exe/AMD64 prompt/off</code></pre>
+                            </div>
+                            <p style="margin-top: 0.5em;">If aws is not recognized, restart the command prompt or refer to the AWS CLI troubleshooting documentation.</p>
+                            <li><i class="bi"></i>To confirm that the AWS CLI is correctly connected to your AWS account:</li>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">aws iam get-user</code></pre>
+                            </div>
+                            <p style="margin-top: 0.5em;"><strong>Example output:</strong></p>
+                            <div class="code-block">
+                                <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">{
+    "User": {
+        "Path": "/",
+        "UserName": "user01",
+        "UserId": "xxxxxxxxxx",
+        "Arn": "arn:aws:iam::xxxxxxxx6:user/user01",
+        "CreateDate": "2025-07-09T12:47:15+00:00",
+        "PasswordLastUsed": "2025-07-09T13:11:25+00:00",
+        "Tags": [
+            {
+                "Key": "AXXXXXXXXXXXXXXXXXXXX",
+                "Value": "Terraform User"
+            }
+        ]
+    }
+}</code></pre>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. TERRAFORM CONFIGURATION -->
+            <section id="terraform-configuration" class="blog-section">
+                <h2 class="collapsible main-heading">4.	TERRAFORM CONFIGURATION</h2>
+                <div class="content">
+                <p style="text-align: justify; margin-bottom: 20px;">This section outlines the structure and function of the individual Terraform configuration files that collectively automate the provisioning of the EC2 instance and deployment of the static website. These files work together as modular building blocks to ensure a maintainable, scalable, and declarative infrastructure-as-code (IaC) approach.</p>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.1 providers.tf</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">The providers.tf file configures the AWS provider used by Terraform. It specifies the target AWS region and the CLI profile under which the resources will be provisioned. These values are parameterized using input variables to allow flexibility across different environments or AWS accounts.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">##########################################################
+# File: providers.tf
+#
+# Description:
+# This file configures the primary cloud provider used by 
+# the Terraform project. In this case, it sets up the AWS 
+# provider by specifying the region and credentials profile.
+#
+# Purpose:
+# - To initialize the AWS provider required to provision 
+#   and manage cloud infrastructure.
+# - The region and profile used are externalized as input 
+#   variables for portability and environment-based flexibility.
+#
+# Contribution to Overall Setup:
+# This is a foundational configuration file. Without it, 
+# Terraform cannot interact with the AWS APIs to provision 
+# resources such as EC2 instances, VPCs, or S3 buckets.
+#
+# Best Practices:
+# - Avoid hardcoding credentials.
+# - Always externalize environment-specific values (e.g., 
+#   region, profile) to `variables.tf`.
+# - Use separate AWS profiles for production and staging 
+#   to enforce environment separation.
+##########################################################
+
+# Configure the AWS provider with the specified region and profile
+provider "aws" {
+  region  = var.aws_region    # AWS region where resources will be provisioned (e.g., eu-north-1)
+  profile = var.aws_profile   # Named AWS CLI profile used for authentication
+}</code></pre>
+                        </div>
+					</div>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.2 variables.tf</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">The variables.tf file defines all configurable parameters used across the Terraform project. This includes AWS region, profile name, EC2 instance type, AMI ID, key pair settings, SSH key paths, and the GitHub repository containing the static website code. Default values are provided to simplify initial usage, while still allowing overrides via terraform.tfvars or CLI inputs.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">##########################################################
+# File: variables.tf
+#
+# Description:
+# This file defines all input variables used across the 
+# Terraform project. These variables externalize critical 
+# values like AWS region, instance type, AMI ID, key paths, 
+# and GitHub repository URL.
+#
+# Purpose:
+# - To parameterize the infrastructure setup for flexibility.
+# - To allow customization across environments (e.g., dev, prod).
+#
+# Contribution to Overall Setup:
+# This file makes the code reusable and environment-agnostic 
+# by decoupling hardcoded values from resource definitions.
+#
+# Best Practices:
+# - Use descriptive variable names and include helpful 
+#   descriptions.
+# - Store secrets (e.g., private keys) securely and avoid 
+#   committing sensitive values to version control.
+# - Set defaults for development, but override via CLI or 
+#   workspace-specific `*.tfvars` files for production.
+##########################################################
+
+# AWS region where the infrastructure will be deployed
+variable "aws_region" {
+  description = "AWS region to deploy resources"
+  type        = string
+  default     = "&lt;your_aws_region&gt;"
+}
+
+# Named AWS CLI profile used for Terraform authentication
+variable "aws_profile" {
+  description = "AWS CLI profile for Terraform"
+  type        = string
+  default     = "default"
+}
+
+# EC2 instance type to provision (Free Tier eligible: t3.micro or t2.micro)
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
+# Amazon Machine Image (AMI) ID for Amazon Linux 2023
+variable "ami_id" {
+  description = "AMI ID for Amazon Linux 2023"
+  type        = string
+  default     = "ami-00c8ac9147e19828e"
+}
+
+# Name of the EC2 Key Pair to associate with the instance
+variable "key_name" {
+  description = "Name of the EC2 key pair"
+  type        = string
+  default     = "&lt;your_key_name&gt;"
+}
+
+# GitHub repository URL from which the EC2 instance will clone the website
+variable "github_repo" {
+  description = "GitHub repo URL for website content"
+  type        = string
+  default     = "&lt;your_git_repository_link&gt;"
+}
+
+variable "ec2_instance_name" {
+  description = "Name of the EC2 instance"
+  type        = string
+  default     = "&lt;your_key_name&gt;"
+}</code></pre>
+                        </div>
+					</div>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.3 keypair.tf</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">This file provisions an SSH key pair that is used to securely access the EC2 instance. A new RSA private key is generated using the tls_private_key resource, and both the private and public keys are stored locally. The public key is then uploaded to AWS using the aws_key_pair resource to associate it with the EC2 instance. This ensures secure and automated access to the server.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">##########################################################
+# File: keypair.tf
+#
+# Description:
+# This file manages the generation and provisioning of SSH 
+# key pairs used to securely access the EC2 instance.
+#
+# Purpose:
+# - Generates a new RSA key pair (4096-bit).
+# - Writes the private and public keys to local files.
+# - Registers the public key with AWS as a Key Pair so it 
+#   can be attached to EC2 instances.
+#
+# Contribution to Overall Setup:
+# Enables secure SSH access to EC2 instances for setup and 
+# troubleshooting. The private key can later be converted 
+# to `.ppk` for PuTTY if needed.
+#
+# Best Practices:
+# - Keys are written to paths defined in `variables.tf`.
+# - Use appropriate file permissions (`0600` for private).
+# - DO NOT commit the generated keys to version control.
+##########################################################
+
+# Generate a new RSA 4096-bit private/public SSH key pair
+resource "tls_private_key" "ssh_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# Store the private key securely on the local machine
+resource "local_file" "private_key" {
+  content         = tls_private_key.ssh_key.private_key_pem
+  filename        = "${path.module}/.ssh/&lt;your_private_key_name&gt;.pem"
+  file_permission = "0600"
+}
+
+# Store the public key on the local machine
+resource "local_file" "public_key" {
+  content         = tls_private_key.ssh_key.public_key_openssh
+  filename        = "${path.module}/.ssh/&lt;your_public_key_name&gt;.pub"
+  file_permission = "0644"
+}
+
+# Register the public key with AWS EC2 as a named Key Pair
+resource "aws_key_pair" "deployer" {
+  key_name   = var.key_name
+  public_key = tls_private_key.ssh_key.public_key_openssh
+}</code></pre>
+                        </div>
+					</div>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.4 security_group.tf</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">The security_group.tf file defines the security group associated with the EC2 instance. It allows inbound access on ports 22 (SSH), 80 (HTTP), and 443 (HTTPS) from any source IP. Outbound traffic is allowed to all destinations. This configuration is sufficient to enable web traffic and administrative access for a basic public-facing website hosted on EC2.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">############################################################
+# File: security_group.tf
+#
+# Description:
+# Defines the AWS Security Group used by the EC2 instance
+# hosting the static web application.
+#
+# Purpose:
+# - Controls inbound (ingress) and outbound (egress) traffic
+#   to the EC2 instance.
+# - Opens necessary ports for SSH (22), HTTP (80), and HTTPS (443).
+#
+# Contribution to Overall Setup:
+# This resource ensures that:
+# - You can securely SSH into the instance.
+# - Web traffic (HTTP/HTTPS) is allowed from the internet.
+# - The instance can make outbound calls if needed (e.g., for package installs).
+#
+# Best Practices:
+# - Restrict SSH (`port 22`) to known IP ranges in production.
+# - Keep rules tightly scoped for enhanced security.
+############################################################
+
+# Define a security group to allow SSH, HTTP, and HTTPS traffic
+resource "aws_security_group" "web_sg" {
+  name        = "&lt;your_security_group_name&gt;"
+  description = "Allow SSH, HTTP, HTTPS"
+
+  # Allow incoming SSH traffic (port 22) from all IPs
+  # NOTE: Restrict in production to specific IPs
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow incoming HTTP traffic (port 80) for website access
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow incoming HTTPS traffic (port 443) for secure access
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow all outbound traffic
+  # Necessary for updates, git clone, etc.
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}</code></pre>
+                        </div>
+					</div>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.5 ec2_instance.tf</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">This file provisions the actual EC2 instance and includes a detailed user_data script that automates the entire server configuration. The script performs a system update, installs Nginx and Git, clones the static website from the specified GitHub repository, configures the Nginx web server, and starts the service. Additional Nginx configuration is embedded to add caching, security headers, compression, and other best practices for static site performance and security.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">############################################################
+# File: ec2_instance.tf
+#
+# Description:
+# Defines the main EC2 instance used to host the Static
+# static website using NGINX on Amazon Linux 2023.
+#
+# Purpose:
+# - Provisions an EC2 instance with appropriate configuration.
+# - Installs and configures NGINX with custom headers and caching.
+# - Automatically clones the static website from GitHub repo.
+#
+# Contribution to Overall Setup:
+# This is the compute resource running the production website.
+# Bootstrap is handled via `user_data`, ensuring zero manual steps.
+#
+# Best Practices:
+# - Uses variables for flexibility.
+# - Includes tags for easier identification.
+# - Automates full provisioning using `user_data`.
+# - NGINX config is declared inline within EC2 instance creation.
+############################################################
+
+# Define the EC2 instance resource
+resource "aws_instance" "web" {
+  # Use the specified AMI (Amazon Linux 2023)
+  ami = var.ami_id
+
+  # EC2 instance type, default is t3.micro (Free Tier eligible)
+  instance_type = var.instance_type
+
+  # Associate the EC2 Key Pair created by Terraform
+  key_name = aws_key_pair.deployer.key_name
+  #key_name = "&lt;your_existing_key_name&gt;"
+
+  # Attach security group that allows SSH, HTTP, and HTTPS
+  vpc_security_group_ids = [aws_security_group.web_sg.id]
+  #vpc_security_group_ids = ["sg-0ee5f6f626e80c130"]
+
+  # Inline user_data script to fully bootstrap the EC2 instance
+  user_data = &lt;&lt;-EOF
+    #!/bin/bash
+
+    # 1. System update and install packages
+    dnf update -y
+    dnf install -y nginx git
+
+    # 2. Configure web root directory
+    mkdir -p /var/www/html
+    chown -R nginx:nginx /var/www
+    chmod -R 755 /var/www
+
+    # 3. Deploy website from GitHub (clone if first time, pull otherwise)
+    if ! git clone ${var.github_repo} /var/www/html; then
+      cd /var/www/html && git pull origin main
+    fi
+
+    # 4. Write custom NGINX configuration with security and performance settings
+    cat &gt; /etc/nginx/conf.d/&lt;your_ngnix_file_name&gt;.conf &lt;&lt; 'NGINX_CONF'
+    server {
+        listen 80;
+        server_name _;
+
+        root /var/www/html;
+        index index.html;
+
+        # Security headers
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+        add_header Permissions-Policy "geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()" always;
+
+        # Compression
+        gzip on;
+        gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+        gzip_min_length 1024;
+        gzip_proxied any;
+        gzip_comp_level 5;
+        gzip_vary on;
+
+        # Static file caching
+        location ~* \.(?:css|js|jpe?g|png|gif|ico|svg|woff2?)$ {
+            expires 30d;
+            add_header Cache-Control "public, no-transform";
+            access_log off;
+            log_not_found off;
+        }
+
+        location / {
+            try_files $uri $uri/ =404;
+            add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" always;
+        }
+
+        # Security settings
+        server_tokens off;
+        client_max_body_size 1m;
+        client_body_buffer_size 16k;
+        client_header_buffer_size 1k;
+
+        # Logging
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log warn;
+    }
+    NGINX_CONF
+
+    # 5. Validate and start NGINX
+    nginx -t && systemctl enable nginx && systemctl restart nginx
+  EOF
+
+  # Resource tagging for identification and filtering
+  tags = {
+    Name = var.ec2_instance_name
+  }
+}</code></pre>
+                        </div>
+					</div>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.6 outputs.tf</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">The outputs.tf file defines output variables that display useful information after the Terraform deployment completes. Specifically, it reveals the public IP address of the EC2 instance and a pre-formatted SSH command that the user can execute to connect to the server securely. These outputs streamline post-deployment access and verification.</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">############################################################
+# File: outputs.tf
+#
+# Description:
+# This file defines Terraform output variables that expose
+# useful information after infrastructure provisioning is complete.
+#
+# Purpose:
+# - Display the public IP of the deployed EC2 instance.
+# - Provide the exact SSH command to access the instance securely.
+#
+# Contribution to Overall Setup:
+# This file is essential for quickly retrieving access details
+# without having to manually inspect AWS console or Terraform state.
+#
+# Best Practices:
+# - Descriptive names and explanations.
+# - Clear guidance for SSH access using generated private key.
+# - Outputs simplify post-deploy troubleshooting and operations.
+############################################################
+
+# Output the public IP address of the EC2 instance for browser/SSH access
+output "public_ip" {
+  description = "Public IP of the web server"
+  value       = aws_instance.web.public_ip
+}
+
+output "ssh_command" {
+  description = "SSH command to connect via PuTTY/OpenSSH"
+  value       = "ssh -i ${path.module}/.ssh/&lt;your_private_key_name&gt;.pem ec2-user@${aws_instance.web.public_ip}"
+  sensitive = true
+}</code></pre>
+                        </div>
+					</div>
+
+                    <!-- Subheading: 4.	TERRAFORM CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">4.7 Summary of Infrastructure Provisioning</h3>
+                    <div class="content">
+                    <p style="text-align: justify; margin-bottom: 20px;">The Terraform configuration described above performs the following actions:</p>
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Provisions a new EC2 instance based on Amazon Linux 2023</li>
+                            <li><i class="bi"></i>Installs required packages including Nginx and Git using an inline user_data script</li>
+                            <li><i class="bi"></i>Clones a static website from a public GitHub repository into /var/www/html</li>
+                            <li><i class="bi"></i>Configures and starts the Nginx web server to serve the website</li>
+                            <li><i class="bi"></i>Applies basic Nginx best practices including compression, caching, and security headers</li>
+                            <li><i class="bi"></i>Outputs the instance’s public IP and an SSH command for direct access</li>
+						</ul>
+                    <p style="text-align: justify; margin-bottom: 20px;">Sample Terraform code for this setup is publicly available <a href="https://github.com/TechSavvyRC/aws-static-site-deploy.git" target="_blank">here</a>.</p>
+                    <p style="text-align: justify; margin-bottom: 20px;">You can fork or clone the repository and update the variables/configuration to match your setup.</p>
+					</div>
+				</div>
+            </section>
+
+            <!-- 5. DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+            <section id="iac" class="blog-section">
+                <h2 class="collapsible main-heading">5.	DEPLOYING INFRASTRUCTURE USING TERRAFORM</h2>
+                <div class="content">
+                <p style="text-align: justify; margin-bottom: 20px;">Once all Terraform configuration files are prepared and tailored to your environment, follow these steps to deploy the infrastructure on AWS:</p>
+
+                    <!-- Subheading: DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">5.1 Initialize Terraform</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>This command initializes the working directory containing Terraform configuration files. It downloads necessary provider plugins and prepares the directory for deployment.</li>
+                               <div class="code-block">
+                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                    <pre><code class="language-bash">terraform init</code></pre>
+                                </div>
+						</ul>
+					</div>
+
+                    <!-- Subheading: DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">5.2 Review the Execution Plan</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>This step helps verify what resources will be created or modified before applying the changes.</li>
+                                <div class="code-block">
+                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                    <pre><code class="language-bash">terraform plan</code></pre>
+                                </div>
+						</ul>
+					</div>
+
+                    <!-- Subheading: DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">5.3 Apply the Terraform Configuration</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>This command provisions the actual resources defined in the Terraform configuration. It will prompt you to confirm the action.</li>
+                                <div class="code-block">
+                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                    <pre><code class="language-bash">terraform apply</code></pre>
+                                </div>
+						</ul>
+                    <p style="text-align: justify; margin-bottom: 20px;">You will see output variables (like the EC2 public IP and SSH command) after successful execution.</p>
+					</div>
+
+                    <!-- Subheading: DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">5.4 Verify Deployment in Browser</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>After the infrastructure is successfully created and the EC2 instance is running, verify that the static website is live and served correctly via Nginx.</li>
+                            <li><i class="bi"></i>Open a web browser and enter the EC2 public IP in the address bar:</li>
+                            <div class="code-block"><button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                <pre><code class="language-bash">http://&lt;your-ec2-public-ip&gt;</code></pre>
+                            </div>
+						</ul>
+                        <p style="text-align: justify; margin-bottom: 20px;">You should see your personal website as hosted from the EC2 instance. If the site does not load, ensure:</p>
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>The EC2 instance is in the running state.</li>
+                            <li><i class="bi"></i>Port 80 (HTTP) is open in the security group.</li>
+                            <li><i class="bi"></i>Nginx is running correctly on the instance.</li>
+                            <li><i class="bi"></i>Your GitHub repository is public and accessible.</li>
+						</ul>
+					</div>
+
+                    <!-- Subheading: DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">5.5 Connect via SSH (Optional)</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>To log into the EC2 instance:</li>
+                                <div class="code-block">
+                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                    <pre><code class="language-bash">ssh -i &lt;path-to-your-private-key.pem&gt; ec2-user@&lt;your-ec2-public-ip&gt;</code></pre>
+                                </div>
+						</ul>
+					</div>
+
+                    <!-- Subheading: DEPLOYING INFRASTRUCTURE USING TERRAFORM -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">5.6 Destroy the Infrastructure (Optional)</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>When you no longer need the deployed infrastructure, run the following to delete all resources:</li>
+                                <div class="code-block">
+                                    <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                                    <pre><code class="language-bash">terraform destroy</code></pre>
+                                </div>
+						</ul>
+                    <p style="text-align: justify; margin-bottom: 20px;">This helps avoid unintended AWS charges.</p>
+					</div>
+
+                </div>
+            </section>
+
+            <!-- 6. DOMAIN AND DNS CONFIGURATION Section -->
+            <section id="domain" class="blog-section">
+                <h2 class="collapsible main-heading">6.	DOMAIN AND DNS CONFIGURATION</h2>
+                <div class="content">
+                <p style="text-align: justify; margin-bottom: 20px;">If you have purchased a custom domain (e.g., from Hostinger, GoDaddy, Namecheap, etc.), you can link it to your EC2 instance to make your website accessible using a branded URL like www.yourdomain.com.</p>
+                    <!-- Subheading: 6.	DOMAIN AND DNS CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">6.1 Update DNS Records</h3>
+                    <div class="content">
+                        <p style="text-align: justify; margin-bottom: 20px;">Regardless of your domain registrar, the DNS configuration process generally involves adding an A Record:</p>
+                         <table  class="content-table">
+                           <tr><th>DNS Record Type</th><th>Name</th><th>Value</th><th>TTL</th><th>Description</th></tr>
+                           <tr><td>A</td><td>@</td><td>&lt;your-ec2-public-ip&gt;</td><td>Auto</td><td>Maps root domain to EC2 instance</td></tr>
+                           <tr><td>CNAME</td><td>www</td><td>&lt;your-ec2-public-ip&gt;</td><td>Auto</td><td>Maps www subdomain to EC2 instance</td></tr>
+                         </table>
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Replace &lt;your-ec2-public-ip&gt; with the actual public IP of your EC2 instance.</li>
+                            <li><i class="bi"></i>These records ensure that when users visit your domain, they are directed to your hosted website.</li>
+                            <li><i class="bi"></i>DNS changes can take up to 24–48 hours to fully propagate, but usually work within a few minutes to a few hours.</li>
+						</ul>
+					</div>
+                    <!-- Subheading: 6.	DOMAIN AND DNS CONFIGURATION -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">6.2 SSL Certificate (HTTPS Support)</h3>
+                    <div class="content">
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Some domain providers (like Namecheap or Hostinger) may offer free or paid SSL certificates.</li>
+                            <li><i class="bi"></i>If your provider does not offer free SSL, you can use Cloudflare to manage DNS and enable free SSL with HTTPS:</li>
+                            <ul class="custom-bullets">
+                                <li><i class="bi"></i>Create a free Cloudflare account at https://cloudflare.com</li>
+                                <li><i class="bi"></i>Add your domain to Cloudflare and follow the instructions to update your domain registrar’s nameservers to point to Cloudflare.</li>
+                                <li><i class="bi"></i>Once DNS is managed through Cloudflare:</li>
+                                <ul class="custom-bullets">
+                                    <li><i class="bi"></i>Go to SSL/TLS settings and enable:</li>
+                                    <ul class="custom-bullets">
+                                        <li><i class="bi"></i>Flexible or Full SSL</li>
+                                        <li><i class="bi"></i>Always Use HTTPS</li>
+                                        <li><i class="bi"></i>Automatic HTTPS Rewrites</li>
+						            </ul>
+						        </ul>
+						    </ul>
+						</ul>
+					</div>
+                </div>
+            </section>
+
+            <!-- 7. IMPORTANT CONSIDERATIONS AND CAUTIONS -->
+            <section id="cautions" class="blog-section">
+                <h2 class="collapsible main-heading">7.	IMPORTANT CONSIDERATIONS AND CAUTIONS</h2>
+                <div class="content">
+                <p style="text-align: justify; margin-bottom: 20px;">If you have purchased a custom domain (e.g., from Hostinger, GoDaddy, Namecheap, etc.), you can link it to your EC2 instance to make your website accessible using a branded URL like www.yourdomain.com.</p>
+
+                    <!-- Subheading: 7.	IMPORTANT CONSIDERATIONS AND CAUTIONS -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.1 Free SSL and Public IP Caution</h3>
+                    <div class="content">
+                        <p style="text-align: justify; margin-bottom: 20px;">While Cloudflare’s free SSL and DNS services offer convenience and security for personal or portfolio websites, they are not a substitute for enterprise-grade security. Publicly exposing your EC2 instance’s IP address may leave it vulnerable to unauthorized access. This configuration is not suitable for production systems or sensitive applications.</p>
+					</div>
+
+                    <!-- Subheading: 7.	IMPORTANT CONSIDERATIONS AND CAUTIONS -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.2 Monitor AWS Billing Regularly</h3>
+                    <div class="content">
+                        <p style="text-align: justify; margin-bottom: 20px;">Even though the AWS Free Tier provides cost-effective resources like t3.micro instances, it's important to actively monitor your AWS billing dashboard. Unexpected charges can arise due to:</p>
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Region-specific pricing</li>
+                            <li><i class="bi"></i>Data transfer costs</li>
+                            <li><i class="bi"></i>Manual configuration errors</li>
+                            <li><i class="bi"></i>Exceeding free tier limits</li>
+						</ul>
+                        <p style="text-align: justify; margin-bottom: 20px;">Regularly check the AWS Billing Console to stay informed and prevent cost overruns.</p>
+					</div>
+
+                    <!-- Subheading: 7.	IMPORTANT CONSIDERATIONS AND CAUTIONS -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.3 Manual Cleanup</h3>
+                    <div class="content">
+                        <p style="text-align: justify; margin-bottom: 20px;">If you're testing or no longer need the deployed infrastructure, be sure to destroy it manually using Terraform. Idle resources like EC2 instances, EBS volumes, or Elastic IPs can incur charges over time. Use:</p>
+                        <div class="code-block">
+                            <button class="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                            <pre><code class="language-bash">terraform destroy</code></pre>
+                        </div>
+
+                        <p style="text-align: justify; margin-bottom: 20px;">This will clean up all resources provisioned by your Terraform code.</p>
+					</div>
+
+                    <!-- Subheading: 7.	IMPORTANT CONSIDERATIONS AND CAUTIONS -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.4 IAM & Key Security</h3>
+                    <div class="content">
+                        <p style="text-align: justify; margin-bottom: 20px;">Use a dedicated IAM user with the minimum required permissions rather than the root account. Always:</p>
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Store .pem SSH keys securely (never commit them to version control)</li>
+                            <li><i class="bi"></i>Avoid sharing IAM credentials</li>
+                            <li><i class="bi"></i>Rotate access keys periodically</li>
+						</ul>
+                        <p style="text-align: justify; margin-bottom: 20px;">Neglecting these practices can lead to serious security breaches.</p>
+					</div>
+
+                    <!-- Subheading: 7.	IMPORTANT CONSIDERATIONS AND CAUTIONS -->
+                    <h3 style="margin-top: 0.5em;" class="collapsible subheading">7.5 Domain Visibility</h3>
+                    <div class="content">
+                        <p style="text-align: justify; margin-bottom: 20px;">Even with Cloudflare proxy enabled, DNS records may still expose metadata about your hosting configuration. Use the Cloudflare “Proxied” mode to hide your EC2 public IP and enable caching, DDoS protection, and SSL termination. However, keep in mind:</p>
+                        <ul class="custom-bullets">
+                            <li><i class="bi"></i>Some online tools may still reveal underlying IPs via HTTP headers or DNS history</li>
+                            <li><i class="bi"></i>Full anonymity requires advanced configuration and may not be achievable with basic setups</li>
+						</ul>
+					</div>
+
+                </div>
+            </section>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+
+        <script>
+            // Collapsible sections functionality
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+            
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                // Toggle the 'active' class for the collapsible element
+                this.classList.toggle("active");
+            
+                // Find the content element right after the collapsible element
+                var content = this.nextElementSibling;
+            
+                // Toggle the display property for smooth expand/collapse
+                if (content.style.display === "block") {
+                  content.style.display = "none"; // Collapse content
+                } else {
+                  content.style.display = "block"; // Expand content
+                }
+              });
+            }
+
+            // Copy button functionality
+            document.querySelectorAll('.copy-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const codeBlock = button.nextElementSibling.querySelector('code');
+                    navigator.clipboard.writeText(codeBlock.textContent);
+                    
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleSubmenuLinks = document.querySelectorAll('.toggle-submenu');
+            
+                toggleSubmenuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        const submenu = this.nextElementSibling;
+            
+                        if (submenu.style.display === 'block') {
+                            submenu.style.display = 'none'; // Collapse submenu
+                        } else {
+                            submenu.style.display = 'block'; // Expand submenu
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
