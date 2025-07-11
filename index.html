@@ -3,7 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self';">
+        <meta http-equiv="Content-Security-Policy"
+		    content="
+               default-src 'self';
+               style-src   'self' 'unsafe-inline'
+                           https://fonts.googleapis.com
+                           https://cdnjs.cloudflare.com
+                           https://cdn.jsdelivr.net;
+               font-src    'self'
+                           https://fonts.gstatic.com
+                           https://cdnjs.cloudflare.com
+                           https://cdn.jsdelivr.net;
+      ">
+
         <title>TechSavvy</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
