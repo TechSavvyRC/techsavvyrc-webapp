@@ -287,7 +287,8 @@ h6 {
     font-weight: 400;
     display: flex;
     align-items: center;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word; 
     transition: 0.3s;
     width: 100%;
 }
@@ -1563,7 +1564,7 @@ section,
 }
 
 .blog-page .sidebar {
-    width: var(--sidebar-width);
+    width: 300px;
     background: #040b14;
     padding: 2rem;
     border-right: 1px solid #e5e7eb;
@@ -1801,10 +1802,12 @@ section,
     font-size: 16px;
     font-weight: 400;
     display: flex;
+    flex-wrap: wrap;       
     align-items: center;
-    white-space: nowrap;
     transition: 0.3s;
     width: 100%;
+    white-space: normal;   
+    word-break: break-word;
 }
 
 .blog-page .navmenu a .navicon,
@@ -1940,4 +1943,43 @@ section,
 
 .blog-page h3 + h3 {
     margin-top: 40px; /* Add more space between consecutive headings */
+}
+
+.blog-page .navmenu ul li {
+    width: 100%;
+}
+
+.blog-page .navmenu a {
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.blog-page .navmenu a,
+.blog-page .navmenu a:focus {
+    display: flex;
+    align-items: flex-start;         /* prevent icon from stretching anchor height */
+    flex-wrap: wrap;                 /* allow text to wrap */
+    gap: 10px;                       /* space between icon and text */
+    
+    padding: 15px 10px;
+    font-family: var(--nav-font);
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+
+    color: var(--nav-color);
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.blog-page .navmenu ul li {
+    width: 100%;
+}
+
+.blog-page .navmenu a .navicon {
+    font-size: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;  /* keep icon from collapsing */
 }
