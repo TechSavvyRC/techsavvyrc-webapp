@@ -24,62 +24,30 @@
         <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         <!-- Main CSS File -->
         <link href="../css/my_style.css" rel="stylesheet">
-        <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
     </head>
-    <body class="service-details-page">
+    <body class="portfolio-details-page">
         <header id="header" class="header dark-background d-flex flex-column">
             <i class="header-toggle d-xl-none bi bi-list"></i>
             <div class="profile-img">
                 <img src="../img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
             </div>
             <a href="../../index.html" class="logo d-flex align-items-center justify-content-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/img/logo.png" alt=""> -->
                 <h1 class="sitename">Ravi Chandran</h1>
             </a>
-            <!-- <div class="social-links text-center">
-                <a href="#" class="twitter"> <i class="bi bi-twitter-x"></i> </a>
-                <a href="#" class="facebook"> <i class="bi bi-facebook"></i> </a>
-                <a href="#" class="instagram"> <i class="bi bi-instagram"></i> </a>
-                <a href="#" class="google-plus"> <i class="bi bi-skype"></i> </a>
-                <a href="#" class="linkedin"> <i class="bi bi-linkedin"></i> </a>
-            </div> -->
+            <div class="social-links text-center">
+                <a href="https://github.com/TechSavvyRC" class="google-plus"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/ravi-chandran-75592334" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero"><i class="bi bi-house navicon"></i>Home</a></li>
-                    <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-                    <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-                    <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Projects</a></li>
-                    <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-                    <!-- <li class="dropdown">
-                        <a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="#">Dropdown 1</a></li>
-                            <li class="dropdown">
-                                <a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Dropdown 1</a></li>
-                                    <li><a href="#">Deep Dropdown 2</a></li>
-                                    <li><a href="#">Deep Dropdown 3</a></li>
-                                    <li><a href="#">Deep Dropdown 4</a></li>
-                                    <li><a href="#">Deep Dropdown 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Dropdown 2</a></li>
-                            <li><a href="#">Dropdown 3</a></li>
-                            <li><a href="#">Dropdown 4</a></li>
-                        </ul>
-                    </li> -->
-                    <li>
-                        <a href="#contact">
-                            <i class="bi bi-envelope navicon"></i> Contact </a>
-                    </li>
+                    <li><a href="../../index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
+                    <li><a href="../../index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
+                    <li><a href="../../index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+                    <li><a href="../../index.html#portfolio"><i class="bi bi-images navicon"></i> Projects</a></li>
+                    <li><a href="../../index.html#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+                    <li><a href="../../index.html#blogs"><i class="bi bi-hdd-stack navicon"></i> Blogs and Documents</a></li>
+                    <li><a href="../../index.html#contact"><i class="bi bi-envelope navicon"></i> Contact </a></li>
+                    <li><a href="../doc/RaviChandran-Resume.pdf" download="RaviChandran-Resume.pdf"><i class="bi bi-download navicon"></i> Download Resume</a></li>
                 </ul>
             </nav>
         </header>
@@ -96,17 +64,16 @@
                     </nav>
                 </div>
             </div>
-            <!-- End Page Title -->
-
+            <!-- Close Button -->
             <div class="close-button" onclick="window.history.back();">
                 &times;
             </div>
-
-            <!-- Service Details Section -->
+            <!-- Service Details -->
             <section id="service-details" class="service-details section">
                 <div class="container">
                     <div class="row gy-4">
-                        <div class="col-lg-12"> <!-- data-aos="fade-up" data-aos-delay="100"> -->
+                        <div class="col-lg-12">
+                            <!-- data-aos="fade-up" data-aos-delay="100"> -->
                             <div class="services-list">
                                 <a href="#" data-service="aws-cloud">AWS Cloud</a>
                                 <a href="#" data-service="terraform">Terraform</a>
@@ -139,28 +106,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -178,28 +141,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -217,28 +176,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -256,28 +211,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -295,28 +246,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -334,28 +281,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -373,28 +316,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -412,28 +351,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -451,28 +386,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -490,28 +421,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -529,28 +456,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -568,28 +491,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -607,28 +526,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -646,28 +561,24 @@
                                                 <p class="description">Get started with the basics of AWS Cloud to understand how cloud infrastructure works and how it can be used for scalable solutions.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Explore the fundamentals of Terraform to begin automating cloud infrastructure deployment with Infrastructure as Code (IaC).</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Enabling fast, real-time search and analytics on large volumes of data for better decision-making.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                             <div class="icon flex-shrink-0"><i class="fas fa-cog"></i></div>
                                             <div>
                                                 <p class="description">Processing and transforming data from multiple sources to streamline log management and analysis.</p>
                                             </div>
                                         </div>
-                                        <!-- End Service Item -->
                                     </div>
                                 </div>
                             </div>
@@ -675,12 +586,9 @@
                     </div>
                 </div>
             </section>
-            <!-- /Service Details Section -->
         </main>
         <!-- Scroll Top -->
-        <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-            <i class="bi bi-arrow-up-short"></i>
-        </a>
+        <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         <!-- Preloader -->
         <div id="preloader"></div>
         <!-- Vendor JS Files -->
