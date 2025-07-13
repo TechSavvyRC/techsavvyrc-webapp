@@ -39,9 +39,9 @@ $apiInstance = new TransactionalEmailsApi(new GuzzleClient(), $config);
 
 // 5) Build and send email
 $emailParams = (new SendSmtpEmail())
-    ->setSender(["email" => "ravi.chandran@techsavvyrc.com", "name" => $name])
+    ->setSender(["email" => "<insert_email_id>", "name" => $name])
     ->setTo([
-        ["email" => "ravi.chandran@techsavvyrc.com", "name" => "Ravi Chandran"],
+        ["email" => "<insert_email_id>", "name" => "<insert_name>"],
     ])
     ->setReplyTo(["email" => $email, "name" => $name])
     ->setSubject($subject)
