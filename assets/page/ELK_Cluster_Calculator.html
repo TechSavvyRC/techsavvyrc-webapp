@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ELK Cluster Planning Tool</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            body {
+            background: linear-gradient(135deg, #1a2a6c, #2a4d69, #4b86b4);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            }
+            .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            }
+            header {
+            background: linear-gradient(to right, #0d47a1, #1976d2);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #64b5f6;
+            }
+            .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            }
+            .logo i {
+            font-size: 2.5rem;
+            color: #ffd54f;
+            }
+            .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            }
+            .tabs {
+            display: flex;
+            background: #e3f2fd;
+            border-bottom: 2px solid #bbdefb;
+            }
+            .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #1565c0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            }
+            .tab.active {
+            background: white;
+            color: #0d47a1;
+            border-bottom: 3px solid #2196f3;
+            }
+            .tab:hover:not(.active) {
+            background: #bbdefb;
+            }
+            .tab-content {
+            padding: 30px;
+            display: none;
+            min-height: 500px;
+            }
+            .tab-content.active {
+            display: block;
+            }
+            .section {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            border-left: 4px solid #2196f3;
+            }
+            .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: #0d47a1;
+            font-size: 1.4rem;
+            font-weight: 700;
+            }
+            .section-title i {
+            font-size: 1.8rem;
+            color: #2196f3;
+            }
+            .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+            }
+            .input-group {
+            display: flex;
+            flex-direction: column;
+            }
+            .input-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1565c0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            }
+            .input-group input, .input-group select {
+            padding: 12px 15px;
+            border: 1px solid #90caf9;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            }
+            .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+            }
+            .calculate-btn {
+            background: linear-gradient(to right, #2196f3, #0d47a1);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+            }
+            .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+            }
+            .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            }
+            .result-card {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #2196f3;
+            }
+            .result-title {
+            font-weight: 600;
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            }
+            .result-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1565c0;
+            }
+            .result-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            }
+            table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            }
+            th {
+            background: #0d47a1;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+            }
+            td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            }
+            tr:nth-child(even) {
+            background: #f5f9ff;
+            }
+            tr:hover {
+            background: #e3f2fd;
+            }
+            .warning {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #d32f2f;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            }
+            .info-box {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+            font-weight: 500;
+            }
+            .explanation-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            }
+            .metric-title {
+            font-weight: 700;
+            color: #0d47a1;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            }
+            .metric-formula {
+            background: #f5f9ff;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 10px 0;
+            border-left: 3px solid #2196f3;
+            }
+            .metric-explanation {
+            color: #444;
+            line-height: 1.7;
+            }
+            .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            border-radius: 0 0 12px 12px;
+            }
+            @media (max-width: 768px) {
+            .tabs {
+            flex-direction: column;
+            }
+            .tab {
+            width: 100%;
+            text-align: center;
+            }
+            .input-grid {
+            grid-template-columns: 1fr;
+            }
+            .results-grid {
+            grid-template-columns: 1fr;
+            }
+            header {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+            }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-server"></i>
+                    <h1>ELK Cluster Planning Tool</h1>
+                </div>
+                <div class="header-info">
+                    <p>Based on Elasticsearch best practices and official documentation</p>
+                </div>
+            </header>
+            <div class="tabs">
+                <div class="tab active" data-tab="overview">Overview</div>
+                <div class="tab" data-tab="calculator">Calculator</div>
+                <div class="tab" data-tab="explanation">Explanation</div>
+            </div>
+            <div class="tab-content active" id="overview">
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-file-alt"></i>
+                        <h2>Purpose of the Workbook</h2>
+                    </div>
+                    <p>This workbook helps engineers, architects, and system administrators plan and estimate infrastructure requirements for deploying an Elasticsearch cluster. It calculates the recommended number of nodes for each role in the cluster—master-eligible nodes, data nodes, ingest nodes, and coordinating nodes—based on key factors like data ingestion volume, indexing rate, and retention policy.</p>
+                    <p>By inputting realistic operational parameters, users can generate a sizing baseline tailored to their use case, improving the reliability and performance of their Elasticsearch deployment while ensuring efficient resource allocation.</p>
+                </div>
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Usage Considerations</h2>
+                    </div>
+                    <p>This tool is intended to serve as a high-level estimation guide for Elasticsearch sizing. It should not be used in isolation to finalize production cluster designs.</p>
+                    <p>Actual requirements may vary depending on:</p>
+                    <ul>
+                        <li>Workload characteristics (query vs. indexing heavy)</li>
+                        <li>Node hardware profiles (CPU, disk I/O, network bandwidth)</li>
+                        <li>Performance tuning (caching, filters, storage tiering)</li>
+                        <li>Security features (encryption, audit logging, etc.)</li>
+                    </ul>
+                    <div class="warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                        It is highly recommended to validate all assumptions through load testing, staging environments, and benchmark trials before applying this sizing in a production scenario.
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-calculator"></i>
+                        <h2>Calculation Methodology</h2>
+                    </div>
+                    <p>All calculations and assumptions in this workbook are informed by official Elasticsearch documentation and community-accepted best practices. The sizing estimates rely on formulas and thresholds that reflect how Elasticsearch handles data distribution, indexing, and query performance.</p>
+                    <p>Key factors taken into account include:</p>
+                    <ul>
+                        <li>Daily ingestion volume (GB or TB)</li>
+                        <li>Retention period (in days or weeks)</li>
+                        <li>Ideal shard size (usually ~30–50 GB)</li>
+                        <li>Desired number of replicas for high availability</li>
+                        <li>Estimated JVM heap size per node</li>
+                        <li>Usable storage per node (factoring in 10–20% overhead)</li>
+                        <li>Shard-to-heap ratio (maximum recommended: ~20 shards per GB of heap)</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-book"></i>
+                        <h2>Official Documentation References</h2>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-ruler"></i> <a href="https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/size-shards" target="_blank">Sizing Shards</a></li>
+                        <li><i class="fas fa-cube"></i> <a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/node-settings" target="_blank">Node Settings</a></li>
+                        <li><i class="fas fa-cog"></i> <a href="https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules" target="_blank">Index Modules</a></li>
+                        <li><i class="fas fa-tools"></i> <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html" target="_blank">Cluster Design and Hardware</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="calculator">
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-sliders-h"></i>
+                        <h2>Input Parameters</h2>
+                    </div>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="dailyData"><i class="fas fa-database"></i> Daily Data Volume (GB)</label>
+                            <input type="number" id="dailyData" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="retention"><i class="fas fa-calendar-day"></i> Retention Period (Days)</label>
+                            <input type="number" id="retention" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="replica"><i class="fas fa-copy"></i> Replica Factor (Count)</label>
+                            <select id="replica">
+                                <option value="0">0 (Testing and Development)</option>
+                                <option value="1">1 (High Availability)</option>
+                                <option value="2">2 (Production)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="overhead"><i class="fas fa-layer-group"></i> Overhead Multiplier</label>
+                            <select id="overhead">
+                                <option value="1.3">1.3 (SSD)</option>
+                                <option value="1.5">1.5 (HDD)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="cores"><i class="fas fa-microchip"></i> CPU Cores per Node (Count)</label>
+                            <input type="number" id="cores" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="ram"><i class="fas fa-memory"></i> Data Node RAM (GB)</label>
+                            <input type="number" id="ram" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="disk"><i class="fas fa-hdd"></i> Disk Size per Data Node (TB)</label>
+                            <input type="number" id="disk" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="shardsHeap"><i class="fas fa-th"></i> Shards per GB Heap</label>
+                            <input type="number" id="shardsHeap" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="targetShard"><i class="fas fa-bullseye"></i> Target Shard Size (GB)</label>
+                            <input type="number" id="targetShard" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="peakIngestion"><i class="fas fa-tachometer-alt"></i> Peak Ingestion Rate (evt/sec)</label>
+                            <input type="number" id="peakIngestion" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="peakQueryLoad"><i class="fas fa-search"></i> Peak Query Load (QPS)</label>
+                            <input type="number" id="peakQueryLoad" value="0">
+                        </div>
+                    </div>
+                    <button id="calculateBtn" class="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calculate Cluster Requirements
+                    </button>
+                </div>
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-cogs"></i>
+                        <h2>2. Heap & Shard Calculations</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Formula</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Heap Size per Node</td>
+                                <td>MIN(ram / 2, 32)</td>
+                                <td id="heapSize">-</td>
+                            </tr>
+                            <tr>
+                                <td>Max Shards per Node</td>
+                                <td>heapSize × shards_per_gb_heap</td>
+                                <td id="maxShardsNode">-</td>
+                            </tr>
+                            <tr>
+                                <td>Total Raw Storage (GB)</td>
+                                <td>dailyData × retention × (1 + replica) × overhead</td>
+                                <td id="totalRawStorage">-</td>
+                            </tr>
+                            <tr>
+                                <td>Usable Storage per Node (GB)</td>
+                                <td>disk × 1024 × 0.8</td>
+                                <td id="usableStorage">-</td>
+                            </tr>
+                            <tr>
+                                <td>Data-Driven Min Shards</td>
+                                <td>CEIL(dailyData / targetShard)</td>
+                                <td id="minShards">-</td>
+                            </tr>
+                            <tr>
+                                <td>Heap-Constrained Shards</td>
+                                <td>CEIL(totalRawStorage / targetShard)</td>
+                                <td id="heapConstrainedShards">-</td>
+                            </tr>
+                            <tr>
+                                <td>Final Daily Shards</td>
+                                <td>MAX(minShards, CEIL(heapConstrainedShards / maxShardsNode))</td>
+                                <td id="finalDailyShards">-</td>
+                            </tr>
+                            <tr>
+                                <td>Total Cluster Shards</td>
+                                <td>finalDailyShards × (1 + replica) × retention</td>
+                                <td id="totalClusterShards">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-chart-line"></i>
+                        <h2>Cluster Recommendations</h2>
+                    </div>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <div class="result-title">Data Nodes</div>
+                            <div class="result-value" id="dataNodes">0</div>
+                            <div class="result-subtitle">Storage and shard requirements</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-title">Master Nodes</div>
+                            <div class="result-value" id="masterNodes">0</div>
+                            <div class="result-subtitle">Cluster coordination</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-title">Ingest Nodes</div>
+                            <div class="result-value" id="ingestNodes">0</div>
+                            <div class="result-subtitle">Data processing pipelines</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-title">Coordinating Nodes</div>
+                            <div class="result-value" id="coordinatingNodes">0</div>
+                            <div class="result-subtitle">Query handling</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-title">Total Nodes</div>
+                            <div class="result-value" id="totalNodes">0</div>
+                            <div class="result-subtitle">Minimum cluster size</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-title">Total Storage</div>
+                            <div class="result-value" id="totalStorage">0 TB</div>
+                            <div class="result-subtitle">Raw storage required</div>
+                        </div>
+                    </div>
+                    <div class="warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Critical Rule: Never exceed 32GB heap! Split into more nodes instead of scaling RAM vertically.
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-table"></i>
+                        <h2>Heap-Driven Shard Adjustment</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Node RAM</th>
+                                <th>Heap Allocation</th>
+                                <th>Max Shards/Node (20/GB)</th>
+                                <th>Max Daily Data Before Adding Shards</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>32GB</td>
+                                <td>16GB</td>
+                                <td>320</td>
+                                <td>16TB</td>
+                            </tr>
+                            <tr>
+                                <td>64GB</td>
+                                <td>30GB</td>
+                                <td>600</td>
+                                <td>30TB</td>
+                            </tr>
+                            <tr>
+                                <td>128GB</td>
+                                <td>32GB</td>
+                                <td>640</td>
+                                <td>32TB</td>
+                            </tr>
+                            <tr>
+                                <td>256GB</td>
+                                <td>32GB</td>
+                                <td>640</td>
+                                <td>32TB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-content" id="explanation">
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-info-circle"></i>
+                        <h2>Metric Explanations</h2>
+                    </div>
+                    <!-- Metric 1 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">1. Daily Data Volume (GB)</div>
+                        <div class="metric-explanation">
+                            The total amount of raw, uncompressed data ingested into the system per day, including source fields and indexing overhead.
+                            <ul>
+                                <li>Measure uncompressed data at ingest</li>
+                                <li>Include all fields (_source + indexing overhead)</li>
+                                <li>Calculate 30-day peak, not average</li>
+                                <li>Tool: Use GET _cat/allocation?v on test cluster</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 2 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">2. Retention Period (Days)</div>
+                        <div class="metric-explanation">
+                            The number of days data is stored before it's eligible for archival or deletion, influencing storage lifecycle tiers (hot/warm/cold).
+                            <ul>
+                                <li>Hot tier: Data actively queried (3-7 days)</li>
+                                <li>Warm tier: Older data (SSD/HDD hybrid)</li>
+                                <li>Cold/Frozen: Archival (object storage)</li>
+                            </ul>
+                            <div class="metric-formula">
+                                ILM Policy Example:<br>
+                                PUT _ilm/policy/logs { <br>
+                                &nbsp;&nbsp;"hot": {"min_age": "0d", "actions": {"rollover": {"max_size": "50gb"}}},<br>
+                                &nbsp;&nbsp;"warm": {"min_age": "7d", "actions": {"forcemerge": {"max_num_segments": 1}}}<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 3 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">3. Replica Factor (Count)</div>
+                        <div class="metric-formula">1=HA, 2=Production</div>
+                        <div class="metric-explanation">
+                            The number of copies of each data shard to ensure high availability and fault tolerance; each replica increases storage usage.
+                            <ul>
+                                <li>Required for high availability</li>
+                                <li>Provides failover during node outages</li>
+                                <li>Enables parallel query execution</li>
+                                <li>Cost: Doubles storage (1 replica) or triples (2 replicas)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 4 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">4. Overhead Multiplier</div>
+                        <div class="metric-formula">1 + (segment_merge_% + os_reserve_%)</div>
+                        <div class="metric-explanation">
+                            A multiplier that accounts for additional storage usage from OS reserves and segment merging, varying by disk type.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Overhead Type</th>
+                                    <th>SSD</th>
+                                    <th>HDD</th>
+                                </tr>
+                                <tr>
+                                    <td>Segment Merges</td>
+                                    <td>15%</td>
+                                    <td>30%</td>
+                                </tr>
+                                <tr>
+                                    <td>OS Reserve</td>
+                                    <td>15%</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>30%</td>
+                                    <td>50%</td>
+                                </tr>
+                            </table>
+                            <p>Defaults: 1.3 (SSD), 1.5 (HDD)</p>
+                        </div>
+                    </div>
+                    <!-- Metric 5 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">5. CPU Cores per Node (Count)</div>
+                        <div class="metric-formula">vcpus × (1 - hyperthreading_discount)<br>Conservative: 8 cores = 8 vCPUs</div>
+                        <div class="metric-explanation">
+                            The number of effective CPU cores per node, dictating processing capacity for indexing and queries.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Node Type</th>
+                                    <th>Min Cores</th>
+                                    <th>Recommended</th>
+                                </tr>
+                                <tr>
+                                    <td>Data</td>
+                                    <td>8</td>
+                                    <td>16-32</td>
+                                </tr>
+                                <tr>
+                                    <td>Ingest</td>
+                                    <td>4</td>
+                                    <td>8-16</td>
+                                </tr>
+                                <tr>
+                                    <td>Coordinating</td>
+                                    <td>4</td>
+                                    <td>8-16</td>
+                                </tr>
+                                <tr>
+                                    <td>Master</td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                </tr>
+                            </table>
+                            <div class="warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Avoid >64 vCPUs - leads to thread contention!
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 6 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">6. Data Node RAM (GB)</div>
+                        <div class="metric-explanation">
+                            The total physical storage per node, with 80% typically allocated for usable Elasticsearch data.
+                            <ul>
+                                <li>Heap ≤ 32GB (Java compressed pointers threshold)</li>
+                                <li>50% RAM to heap, 50% to OS/filesystem cache</li>
+                                <li>Minimum: 8GB RAM (test), 64GB RAM (production)</li>
+                            </ul>
+                            <div class="warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Never use swap memory for heap!
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 7 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">7. Disk Size per Data Node (TB)</div>
+                        <div class="metric-formula">disk_tb × 0.8</div>
+                        <div class="metric-explanation">
+                            The total memory per node, with half allocated to the Java heap (≤32 GB).
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Disk Type</th>
+                                    <th>Max Size</th>
+                                    <th>RAID Config</th>
+                                </tr>
+                                <tr>
+                                    <td>SATA SSD</td>
+                                    <td>8TB</td>
+                                    <td>RAID 0</td>
+                                </tr>
+                                <tr>
+                                    <td>NVMe SSD</td>
+                                    <td>4TB</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>HDD</td>
+                                    <td>16TB</td>
+                                    <td>RAID 10</td>
+                                </tr>
+                            </table>
+                            <div class="warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Avoid >90% disk usage; Prefer 4×2TB NVMe over 1×8TB SATA for throughput
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 8 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">8. Shards per GB Heap</div>
+                        <div class="metric-formula">20 + (5 × storage_type_bonus)</div>
+                        <div class="metric-explanation">
+                            The ideal size range for each shard (30–50 GB), balancing performance and manageability.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Storage Type</th>
+                                    <th>Bonus Value</th>
+                                    <th>Resulting Shards/GB</th>
+                                    <th>Calculation</th>
+                                </tr>
+                                <tr>
+                                    <td>HDD</td>
+                                    <td>0</td>
+                                    <td>20</td>
+                                    <td>20 + (5×0) = 20</td>
+                                </tr>
+                                <tr>
+                                    <td>SATA SSD</td>
+                                    <td>1</td>
+                                    <td>25</td>
+                                    <td>20 + (5×1) = 25</td>
+                                </tr>
+                                <tr>
+                                    <td>NVMe SSD</td>
+                                    <td>2</td>
+                                    <td>30</td>
+                                    <td>20 + (5×2) = 30</td>
+                                </tr>
+                            </table>
+                            <p>Notes:</p>
+                            <ul>
+                                <li>1 shard = ~2MB heap metadata (indexing + search)</li>
+                                <li>Conservative scaling: Max Shards/Node = Heap_GB × 20</li>
+                                <li>Aggressive scaling (SSD-only): Max Shards/Node = Heap_GB × 25</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 9 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">9. Target Shard Size (GB)</div>
+                        <div class="metric-formula">MIN(50, MAX(30, daily_data_gb / 20))<br>Ideal: 30-50GB</div>
+                        <div class="metric-explanation">
+                            The maximum number of index shards that can be supported per GB of Java heap memory.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Shard Size</th>
+                                </tr>
+                                <tr>
+                                    <td>Time-series logs</td>
+                                    <td>50GB</td>
+                                </tr>
+                                <tr>
+                                    <td>Search-heavy</td>
+                                    <td>30GB</td>
+                                </tr>
+                                <tr>
+                                    <td>Vector DB</td>
+                                    <td>10GB</td>
+                                </tr>
+                            </table>
+                            <div class="metric-formula">
+                                Enforcement example:<br>
+                                PUT logs-000001 {<br>
+                                &nbsp;&nbsp;"settings": { <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"index.lifecycle.rollover_alias": "logs",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"index.lifecycle.rollover_size": "50gb" <br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 10 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">10. Peak Ingestion Rate (evt/sec)</div>
+                        <div class="metric-explanation">
+                            The highest event rate (per second) the system needs to handle during ingestion.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Node Type</th>
+                                    <th>Events/Sec/Core</th>
+                                </tr>
+                                <tr>
+                                    <td>Ingest-Optim</td>
+                                    <td>50,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Node</td>
+                                    <td>20,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Coordinating</td>
+                                    <td>30,000</td>
+                                </tr>
+                            </table>
+                            <p>Scaling Tip: 1 ingest node (8 cores) handles 400K evt/sec with no pipelines and default mapping</p>
+                        </div>
+                    </div>
+                    <!-- Metric 11 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">11. Peak Query Load (QPS)</div>
+                        <div class="metric-formula">concurrent_users × queries_per_user</div>
+                        <div class="metric-explanation">
+                            The maximum number of queries the cluster must support per second.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Query Type</th>
+                                    <th>QPS/Core</th>
+                                </tr>
+                                <tr>
+                                    <td>Match_all</td>
+                                    <td>15,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Term Aggregation</td>
+                                    <td>5,000</td>
+                                </tr>
+                                <tr>
+                                    <td>KNN Search</td>
+                                    <td>500</td>
+                                </tr>
+                            </table>
+                            <p>Optimization:</p>
+                            <ul>
+                                <li>Increase coordinating nodes for search-heavy loads</li>
+                                <li>Use shard request cache for repeated queries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 12 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">12. Heap Size per Node</div>
+                        <div class="metric-formula">MIN(node_ram_gb / 2, 32)</div>
+                        <div class="metric-explanation">
+                            The amount of JVM heap allocated per node, capped at 32 GB.
+                            <ul>
+                                <li>Elasticsearch recommends ≤32GB JVM heap due to Java pointer compression</li>
+                                <li>Allocate 50% of physical RAM to heap (e.g., 64GB RAM → 32GB heap)</li>
+                            </ul>
+                            <div class="warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Beyond 32GB, garbage collection efficiency drops sharply
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 13 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">13. Max Shards per Node (Heap)</div>
+                        <div class="metric-formula">heap_gb × shards_per_gb_heap</div>
+                        <div class="metric-explanation">
+                            The upper limit on shards a single node can support.
+                            <ul>
+                                <li>Conservative: 20 shards/GB heap (default for HDD)</li>
+                                <li>Aggressive: 25 shards/GB heap (SSD-optimized clusters)</li>
+                                <li>Example: 32GB heap × 20 shards/GB = 640 shards/node max</li>
+                            </ul>
+                            <div class="metric-formula">
+                                Monitor with: GET _nodes/stats/indices?filter_path=**.shards
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 14 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">14. Total Raw Storage</div>
+                        <div class="metric-formula">daily_data_gb × retention_days × (1 + replica_factor) × overhead_multiplier</div>
+                        <div class="metric-explanation">
+                            The total cluster storage required for all retained data.
+                            <p>Example: 10TB/day × 30 days × (1+1) × 1.3 = 780TB</p>
+                            <ul>
+                                <li>Replica Factor: 1 (HA) or 2 (production)</li>
+                                <li>Overhead Multiplier: 1.3 (SSD) or 1.5 (HDD)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 15 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">15. Usable Storage per Node</div>
+                        <div class="metric-formula">(disk_tb × 1000) × 0.8</div>
+                        <div class="metric-explanation">
+                            Effective disk space per node after reserving 20% for operational needs.
+                            <ul>
+                                <li>Reserve 20% disk space for segment merges, OS operations, and snapshots</li>
+                            </ul>
+                            <div class="warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Never exceed 85% disk usage (critical for cluster health)
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 16 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">16. Data-Driven Min Shards</div>
+                        <div class="metric-formula">CEILING(daily_data_gb / target_shard_size_gb, 1)</div>
+                        <div class="metric-explanation">
+                            The minimum number of daily shards based on the target shard size.
+                            <ul>
+                                <li>Target Shard Size: 30-50GB (sweet spot for query performance)</li>
+                                <li>If daily data = 10TB (10,240GB): 10,240GB / 50GB/shard = 205 shards</li>
+                            </ul>
+                            <p>Exception: Time-series data use ILM rollover at 50GB</p>
+                        </div>
+                    </div>
+                    <!-- Metric 17 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">17. Heap-Constrained Shards</div>
+                        <div class="metric-formula">CEILING(total_raw_storage_gb / target_shard_size_gb, 1)</div>
+                        <div class="metric-explanation">
+                            The total number of shards required across the cluster.
+                            <ul>
+                                <li>Represents total shards cluster must handle (not daily)</li>
+                                <li>Validates if heap can manage shard count</li>
+                            </ul>
+                            <p>Example: 780TB raw storage / 50GB/shard = 15,600 shards</p>
+                        </div>
+                    </div>
+                    <!-- Metric 18 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">18. Final Daily Shards</div>
+                        <div class="metric-formula">MAX(min_shards, CEILING(heap_constrained_shards / max_shards_per_node, 1))</div>
+                        <div class="metric-explanation">
+                            The final computed number of shards per day.
+                            <ul>
+                                <li>Takes more restrictive value between data-driven and heap-driven estimates</li>
+                                <li>Ensures neither shard size nor heap limits are violated</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 19 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">19. Total Cluster Shards</div>
+                        <div class="metric-formula">final_daily_shards × (1 + replica_factor) × retention_days</div>
+                        <div class="metric-explanation">
+                            The cumulative shard count for the full retention window.
+                            <ul>
+                                <li>Replica Factor: 1 replica → 2x shards (1 primary + 1 replica)</li>
+                                <li>Absolute Limits: ≤ 1,000 shards/node, ≤ 100,000 shards/cluster</li>
+                            </ul>
+                            <p>Example: 205 daily shards × 2 × 30 days = 12,300 shards</p>
+                        </div>
+                    </div>
+                    <!-- Metric 20 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">20. Data Nodes (Storage)</div>
+                        <div class="metric-formula">CEILING(total_raw_storage_gb / usable_storage_per_node, 1)</div>
+                        <div class="metric-explanation">
+                            The number of data nodes required to meet total storage needs.
+                            <ul>
+                                <li>Based purely on storage capacity requirements</li>
+                                <li>Uses total raw storage including replicas and overhead</li>
+                            </ul>
+                            <p>Critical: Must be ≥ actual storage needed at retention period end</p>
+                        </div>
+                    </div>
+                    <!-- Metric 21 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">21. Data Nodes (Shards)</div>
+                        <div class="metric-formula">CEILING(total_cluster_shards / max_shards_per_node, 1)</div>
+                        <div class="metric-explanation">
+                            The number of data nodes needed based on shard capacity.
+                            <ul>
+                                <li>Based on heap memory limitations for shard management</li>
+                                <li>Prevents shard overload that causes node crashes</li>
+                            </ul>
+                            <p>Rule: Always round up to whole nodes</p>
+                        </div>
+                    </div>
+                    <!-- Metric 22 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">22. Data Nodes (Final)</div>
+                        <div class="metric-formula">MAX(data_nodes_storage, data_nodes_shards)</div>
+                        <div class="metric-explanation">
+                            The greater of the storage-based or shard-based node estimates.
+                            <ul>
+                                <li>Ensures both storage capacity AND heap limits are satisfied</li>
+                                <li>Example: MAX(122, 32) = 122 nodes</li>
+                            </ul>
+                            <p>Optimization: Add 10% buffer for growth</p>
+                        </div>
+                    </div>
+                    <!-- Metric 23 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">23. Ingest Nodes</div>
+                        <div class="metric-formula">CEILING(peak_ingestion_rate / (50,000 × cores_per_node), 1)</div>
+                        <div class="metric-explanation">
+                            Dedicated nodes that handle document preprocessing before indexing.
+                            <ul>
+                                <li>50,000 events/sec/core benchmark for medium-complexity pipelines</li>
+                                <li>Scale up for heavy Grok parsing (+30%) or enrichment lookups (+50%)</li>
+                            </ul>
+                            <p>Default: 1 node minimum even if calculation <1</p>
+                        </div>
+                    </div>
+                    <!-- Metric 24 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">24. Coordinating Nodes</div>
+                        <div class="metric-formula">CEILING(peak_query_load / (5,000 × cores_per_node), 1)</div>
+                        <div class="metric-explanation">
+                            Nodes that serve as query routers and aggregators during search operations.
+                            <ul>
+                                <li>5,000 QPS/core for typical search/aggregation queries</li>
+                                <li>Scale up for complex aggregations (+100%) or ML jobs (+200%)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 25 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">25. Master Nodes</div>
+                        <div class="metric-formula">if(data_nodes_final ≤ 20, 3, 5)</div>
+                        <div class="metric-explanation">
+                            Responsible for cluster coordination, metadata management, and node discovery.
+                            <ul>
+                                <li>Always odd number (3,5,7) to prevent split-brain</li>
+                                <li>Never mix roles - dedicated nodes only</li>
+                                <li>For clusters >100 nodes: 7 masters</li>
+                            </ul>
+                            <div class="metric-formula">
+                                Critical Setting:<br>
+                                discovery.zen.minimum_master_nodes: (master_nodes / 2) + 1
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 26 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">26. Total Nodes</div>
+                        <div class="metric-formula">data_nodes_final + ingest_nodes + coordinating_nodes + master_nodes</div>
+                        <div class="metric-explanation">
+                            The sum of all node types representing the minimum viable cluster size.
+                            <ul>
+                                <li>Minimum production cluster: 7 nodes (3 master + 3 data + 1 ingest/coordinating)</li>
+                                <li>Always include 10-20% buffer for upgrades and failure recovery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Metric 27 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">27. Actual Shards per Node</div>
+                        <div class="metric-formula">total_cluster_shards / data_nodes_final</div>
+                        <div class="metric-explanation">
+                            The average number of shards assigned to each data node.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Range</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr>
+                                    <td>100-500 shards/node</td>
+                                    <td>Optimal</td>
+                                </tr>
+                                <tr>
+                                    <td>>600 shards/node</td>
+                                    <td>Warning</td>
+                                </tr>
+                                <tr>
+                                    <td>>1,000 shards/node</td>
+                                    <td>Critical (risk of instability)</td>
+                                </tr>
+                            </table>
+                            <div class="metric-formula">
+                                Monitor with: GET _cat/allocation?v&h=node,shards
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 28 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">28. Max Shards per Node</div>
+                        <div class="metric-formula">heap_gb × shards_per_gb_heap</div>
+                        <div class="metric-explanation">
+                            The maximum shard capacity a node can safely manage.
+                            <ul>
+                                <li>Conservative: 20 shards/GB heap</li>
+                                <li>Aggressive: 25 shards/GB heap (SSD-only)</li>
+                                <li>Adjust: Lower to 15 shards/GB if using heavy vector search</li>
+                            </ul>
+                            <p>Example: 32GB heap × 20 = 640 shards/node max</p>
+                        </div>
+                    </div>
+                    <!-- Metric 29 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">29. Storage Utilization</div>
+                        <div class="metric-formula">total_raw_storage_gb / (data_nodes_final × usable_storage_per_node)</div>
+                        <div class="metric-explanation">
+                            The ratio of used raw storage to available usable disk space.
+                            <table class="metric-table">
+                                <tr>
+                                    <th>Threshold</th>
+                                    <th>Effect</th>
+                                </tr>
+                                <tr>
+                                    <td>85%</td>
+                                    <td>Read-only mode activated</td>
+                                </tr>
+                                <tr>
+                                    <td>90%</td>
+                                    <td>Shard relocation stops</td>
+                                </tr>
+                            </table>
+                            <p>Target: 65-75% for headroom</p>
+                            <div class="metric-formula">
+                                Autoremediation:<br>
+                                PUT _cluster/settings {<br>
+                                &nbsp;&nbsp;"transient": { <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"cluster.routing.allocation.disk.watermark.low": "85%" <br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 30 -->
+                    <div class="explanation-item">
+                        <div class="metric-title">30. Shard Size Compliance</div>
+                        <div class="metric-formula">IF((daily_data_gb / final_daily_shards) ≥ 30, "ok", "⚠️")</div>
+                        <div class="metric-explanation">
+                            Validation ensuring each shard is at least 30 GB (ideally 30–50 GB).
+                            <ul>
+                                <li>Optimal: 30-50GB/shard</li>
+                                <li>
+                                    Consequences of small shards (<10GB):
+                                    <ul>
+                                        <li>Metadata overhead up to 50% of heap</li>
+                                        <li>Slower query performance</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="metric-formula">
+                                Fix oversharding:<br>
+                                POST /my_index/_shrink/my_new_index { <br>
+                                &nbsp;&nbsp;"settings": { "index.number_of_shards": 10 } <br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>ELK Cluster Planning Tool | Based on Elasticsearch best practices | Not affiliated with Elastic NV</p>
+            </div>
+        </div>
+        <script>
+            // Tab switching functionality
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and content
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
+                });
+            });
+
+            // Calculate button functionality
+            document.getElementById('calculateBtn').addEventListener('click', () => {
+                // Input parsing
+                const dailyData = parseFloat(document.getElementById('dailyData').value) || 0;
+                const retention = parseFloat(document.getElementById('retention').value) || 0;
+                const replica = parseFloat(document.getElementById('replica').value) || 1;
+                const overhead = parseFloat(document.getElementById('overhead').value) || 1.3;
+                const cores = parseFloat(document.getElementById('cores').value) || 8;
+                const ram = parseFloat(document.getElementById('ram').value) || 64;
+                const disk = parseFloat(document.getElementById('disk').value) || 10;
+                const shardsHeap = parseFloat(document.getElementById('shardsHeap').value) || 25;
+                const targetShard = parseFloat(document.getElementById('targetShard').value) || 40;
+                const peakIngestion = parseFloat(document.getElementById('peakIngestion').value) || 0;
+                const peakQueryLoad = parseFloat(document.getElementById('peakQueryLoad').value) || 0;
+
+                // Ensure numeric or zero
+                const ingestionRate = isNaN(peakIngestion) ? 0 : peakIngestion;
+                const queryLoadRate = isNaN(peakQueryLoad) ? 0 : peakQueryLoad;
+
+                // Heap & shard calculations
+                const heapSize = Math.min(ram / 2, 32);
+                const maxShardsNode = heapSize * shardsHeap;
+                const totalRawStorage = dailyData * retention * (1 + replica) * overhead; // in GB
+                const usableStorage = disk * 1024 * 0.8; // in GB
+                const minShards = Math.ceil(dailyData / targetShard);
+                const heapConstrainedShards = Math.ceil(totalRawStorage / targetShard);
+                const finalDailyShards = Math.max(minShards, Math.ceil(heapConstrainedShards / maxShardsNode));
+                const totalClusterShards = finalDailyShards * (1 + replica) * retention;
+
+                // Node calculations (example logic)
+                const dataNodesStorage = Math.ceil(totalRawStorage / usableStorage);
+                const dataNodesShards = Math.ceil(totalClusterShards / maxShardsNode);
+                const dataNodesFinal = Math.max(dataNodesStorage, dataNodesShards);
+                const ingestNodes = ingestionRate > 0 ? Math.ceil(ingestionRate / (50000 * cores)) : 0;
+                const coordinatingNodes = queryLoadRate > 0 ? Math.ceil(queryLoadRate / (5000 * cores)) : 0;
+                const masterNodes = dataNodesFinal < 20 ? 3 : 5;
+                const totalNodes = dataNodesFinal + ingestNodes + coordinatingNodes + masterNodes;
+
+                // Update heap & shard values
+                document.getElementById('heapSize').textContent = heapSize.toFixed(2) + ' GB';
+                document.getElementById('maxShardsNode').textContent = maxShardsNode;
+                document.getElementById('totalRawStorage').textContent = totalRawStorage.toFixed(0) + ' GB';
+                document.getElementById('usableStorage').textContent = usableStorage.toFixed(0) + ' GB';
+                document.getElementById('minShards').textContent = minShards;
+                document.getElementById('heapConstrainedShards').textContent = heapConstrainedShards;
+                document.getElementById('finalDailyShards').textContent = finalDailyShards;
+                document.getElementById('totalClusterShards').textContent = totalClusterShards;
+
+                // Update results
+                document.getElementById('dataNodes').textContent = dataNodesFinal;
+                document.getElementById('masterNodes').textContent = masterNodes;
+                document.getElementById('ingestNodes').textContent = ingestNodes;
+                document.getElementById('coordinatingNodes').textContent = coordinatingNodes;
+                document.getElementById('totalNodes').textContent = totalNodes;
+                document.getElementById('totalStorage').textContent = (totalRawStorage / 1024).toFixed(1) + ' TB';
+
+                // Show notification
+                alert('Calculation completed successfully!');
+            });
+        </script>
+    </body>
+</html>
